@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Puzzroo - Modern online puzzle platform for daily brain-training puzzles, logic games, word challenges, and leaderboard competition.">
+  <title>Puzzroo - Train Your Brain, One Puzzle at a Time</title>
+  
+  <!-- Single Hand-written Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. Header & Navigation Section
+       ========================================================================== -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav" id="nav-main" aria-label="Main Navigation">
+        <!-- Logo -->
+        <a href="#home" class="nav-brand" aria-label="Puzzroo Home">
+          <img src="assets/images/logo-img.png" alt="Puzzroo Logo" class="nav-logo-img">
+        </a>
+
+        <!-- Mobile Navigation Menu -->
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#how-it-works" class="nav-link">How it works</a></li>
+          <li><a href="#puzzles" class="nav-link">Puzzles</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Action Buttons & Mobile Hamburger -->
+        <div class="nav-actions">
+          <a href="#puzzles" class="btn btn-primary">Start Playing</a>
+          
+          <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. Hero Section
+       ========================================================================== -->
+  <main>
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="section-badge">Daily Brain Training</span>
+          <h1 class="hero-title">Train your brain, <span class="highlight">one puzzle</span> at a time</h1>
+          <p class="hero-subtitle">
+            Discover thousands of daily logic, word, and number puzzles for every skill level. Challenge your mind, track your streak, and climb global leaderboards with friends.
+          </p>
+          <div class="hero-buttons">
+            <a href="#puzzles" class="btn btn-primary">
+              Play your first puzzle
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#how-it-works" class="btn btn-accent">See How it Works</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">50K+</span>
+              <span class="stat-label">Active Solvers</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1,000+</span>
+              <span class="stat-label">Daily Puzzles</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4.9 ★</span>
+              <span class="stat-label">Player Rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+          <img src="assets/images/hero-img.png" alt="Puzzroo Brain Training Playground" class="hero-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. Categories Section
+         ========================================================================== -->
+    <section class="categories-section" id="puzzles">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Puzzle Varieties</span>
+          <h2 class="section-title">Explore Puzzle Categories</h2>
+          <p class="section-subtitle">Whether you love pattern matching, word puzzles, or mathematical speed tests, we have something for your daily routine.</p>
+        </div>
+
+        <div class="categories-grid">
+          <!-- Logic Puzzles -->
+          <article class="category-card">
+            <div class="category-icon logic">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
+                <line x1="9" y1="21" x2="15" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="category-title">Logic Puzzles</h3>
+            <p class="category-desc">Sharpen your deductive reasoning with spatial grids, sequence solvers, and IQ-boosting pattern challenges.</p>
+          </article>
+
+          <!-- Word Puzzles -->
+          <article class="category-card">
+            <div class="category-icon word">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                <line x1="9" y1="20" x2="15" y2="20"></line>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+              </svg>
+            </div>
+            <h3 class="category-title">Word Puzzles</h3>
+            <p class="category-desc">Expand your vocabulary with daily anagrams, mini crosswords, letter scrambles, and word maze duels.</p>
+          </article>
+
+          <!-- Number Puzzles -->
+          <article class="category-card">
+            <div class="category-icon number">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+              </svg>
+            </div>
+            <h3 class="category-title">Number Puzzles</h3>
+            <p class="category-desc">Boost mental calculation speed with Sudoku master levels, math grids, and high-tempo number blitzen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. How It Works Section
+         ========================================================================== -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Simple Steps</span>
+          <h2 class="section-title">How Puzzroo works</h2>
+          <p class="section-subtitle">Start your daily brain-training habit in three quick steps with instant play access.</p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3 class="step-title">1. Pick a puzzle</h3>
+            <p class="step-desc">Choose from daily featured games across Logic, Word, or Number categories tailored to your skill level.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="step-title">2. Solve & earn points</h3>
+            <p class="step-desc">Complete puzzles before the timer runs out to earn brain XP, keep your daily streak alive, and unlock badges.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+              </svg>
+            </div>
+            <h3 class="step-title">3. Climb the leaderboard</h3>
+            <p class="step-desc">Compare your speed and score against global players or create private leagues to compete with friends.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. Players / Testimonials Section
+         ========================================================================== -->
+    <section class="players-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Community Voices</span>
+          <h2 class="section-title">Loved by puzzle solvers</h2>
+          <p class="section-subtitle">Hear how solvers keep their minds sharp and entertained every single day.</p>
+        </div>
+
+        <div class="players-grid">
+          <!-- Card 1 -->
+          <article class="player-card">
+            <div class="rating-stars">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="player-quote">"Puzzroo has completely replaced my morning social media scrolling. The daily logic puzzles give me an amazing mental spark before work!"</p>
+            <div class="player-info">
+              <img src="assets/images/player-img-1.png" alt="Sarah K." class="player-avatar">
+              <div class="player-details">
+                <span class="player-name">Sarah K.</span>
+                <span class="player-tag">Logic Enthusiast • 120 Day Streak</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="player-card">
+            <div class="rating-stars">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="player-quote">"The multiplayer leaderboards are super addicting! Competing with my coworkers on the daily Sudoku duel has turned into our favorite friendly rivalry."</p>
+            <div class="player-info">
+              <img src="assets/images/player-img-2.png" alt="Marcus T." class="player-avatar">
+              <div class="player-details">
+                <span class="player-name">Marcus T.</span>
+                <span class="player-tag">Sudoku Master • Rank #4</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="player-card">
+            <div class="rating-stars">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="player-quote">"Clean UI, zero annoying popup ads, and smooth performance on mobile. Word Maverick has doubled my vocabulary speed!"</p>
+            <div class="player-info">
+              <img src="assets/images/player-img-3.png" alt="Elena R." class="player-avatar">
+              <div class="player-details">
+                <span class="player-name">Elena R.</span>
+                <span class="player-tag">Word Maverick • 85 Day Streak</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. About Section
+         ========================================================================== -->
+    <section class="about-section" id="about">
+      <div class="container about-container">
+        <div class="about-image-wrapper">
+          <img src="assets/images/about-img.png" alt="Why Puzzroo Brain Training" class="about-img">
+        </div>
+
+        <div class="about-content">
+          <span class="section-badge">Platform Overview</span>
+          <h2 class="section-title">Why Puzzroo</h2>
+          <p class="section-subtitle">
+            Puzzroo combines scientifically crafted cognitive exercises with game-like progression. Every puzzle is designed to train memory, focus, and analytical problem-solving.
+          </p>
+
+          <ul class="about-list">
+            <li class="about-list-item">
+              <span class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span><strong>Fresh Daily Content:</strong> New puzzles generated every midnight across 5 difficulty modes.</span>
+            </li>
+            <li class="about-list-item">
+              <span class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span><strong>Streak & XP Rewards:</strong> Stay motivated with streak shields, XP milestones, and collectible badges.</span>
+            </li>
+            <li class="about-list-item">
+              <span class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span><strong>Brain Analytics:</strong> Track your cognitive improvement over time with detailed skill breakdowns.</span>
+            </li>
+          </ul>
+
+          <a href="#puzzles" class="btn btn-primary">Start Your Brain Workout</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. CTA Band Section
+         ========================================================================== -->
+    <section class="cta-band">
+      <div class="container cta-container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to puzzle? It's free to start.</h2>
+          <p class="cta-text">Join over 50,000 players sharpening their minds every single day. No credit card required.</p>
+          <a href="#puzzles" class="btn btn-light">Join Puzzroo Now</a>
+        </div>
+
+        <img src="assets/images/cta-img.png" alt="Decorative Puzzroo Trophy" class="cta-img">
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. Puzzle Slider Section (Custom Center-Mode Carousel)
+         ========================================================================== -->
+    <section class="puzzle-slider">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Game Previews</span>
+          <h2 class="section-title">Featured Puzzle Games</h2>
+          <p class="section-subtitle">Swipe or click through our daily puzzle preview gallery.</p>
+        </div>
+
+        <div class="center-slider" id="puzzle-carousel">
+          <!-- Navigation Arrow Previous -->
+          <button class="slider-btn prev" id="slider-prev-btn" aria-label="Previous Puzzle Slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+
+          <!-- Slider Track Wrapper -->
+          <div class="slider-container-wrapper">
+            <div class="slider-track" id="slider-track">
+              <!-- Slide 1 -->
+              <div class="slide">
+                <img src="assets/images/slide-1.png" alt="Sudoku Master Challenge" class="slide-img">
+              </div>
+              <!-- Slide 2 -->
+              <div class="slide">
+                <img src="assets/images/slide-2.png" alt="Word Maverick Crosswords" class="slide-img">
+              </div>
+              <!-- Slide 3 -->
+              <div class="slide">
+                <img src="assets/images/slide-3.png" alt="Logic Matrix Grid Puzzle" class="slide-img">
+              </div>
+              <!-- Slide 4 -->
+              <div class="slide">
+                <img src="assets/images/slide-4.png" alt="Pattern Quest Matching" class="slide-img">
+              </div>
+              <!-- Slide 5 -->
+              <div class="slide">
+                <img src="assets/images/slide-5.png" alt="Numble Duel Speed Math" class="slide-img">
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Arrow Next -->
+          <button class="slider-btn next" id="slider-next-btn" aria-label="Next Puzzle Slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. Contact Section
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Get in Touch</span>
+          <h2 class="section-title">Contact Us</h2>
+          <p class="section-subtitle">We would love to hear your feedback, puzzle suggestions, or platform questions.</p>
+        </div>
+
+        <div class="contact-container">
+          <div class="contact-info">
+            <!-- Address Item -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h3>Address</h3>
+                <p>100 Brainwave Alley, Suite 400<br>Puzzle City, PC 90210</p>
+              </div>
+            </div>
+
+            <!-- Phone Item -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h3>Contact Phone</h3>
+                <p>+1 (800) 555-PUZZ<br>Mon - Fri: 9am - 6pm EST</p>
+              </div>
+            </div>
+
+            <!-- Email Item -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h3>E-Mail</h3>
+                <p>hello@puzzroo.com<br>support@puzzroo.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Column -->
+          <div class="map-wrapper">
+            <img src="assets/images/map-img.png" alt="Puzzroo Headquarters Map Location" class="map-img">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       10. Footer Section
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <a href="#home" class="footer-brand" aria-label="Puzzroo Home">
+          <img src="assets/images/logo-white.png" alt="Puzzroo White Logo" class="footer-logo-img">
+        </a>
+
+        <ul class="footer-nav">
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#how-it-works" class="footer-link">How it works</a></li>
+          <li><a href="#puzzles" class="footer-link">Puzzles</a></li>
+          <li><a href="#about" class="footer-link">About</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Puzzroo on Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Puzzroo on Facebook">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Puzzroo on Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Puzzroo on LinkedIn">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Puzzroo. All rights reserved.</p>
+        <p>Handcrafted with Pure HTML, CSS &amp; Vanilla JS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Single Hand-written Script -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
