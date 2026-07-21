@@ -1,0 +1,9 @@
+<svg width="338" height="339" viewBox="0 0 338 339" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="338" height="339" rx="14.6" fill="#F0EDFF"/>
+  <!-- Top & Left Outer Track -->
+  <path d="M 50 200 L 50 60 Q 50 50 60 50 L 280 50 Q 290 50 290 60 L 290 280 Q 290 290 280 290 L 240 290 Q 230 290 230 280 L 230 110 Q 230 100 220 100 L 100 100 Q 90 100 90 110 L 90 200 Z" fill="#A592FF"/>
+  <!-- Middle Track -->
+  <path d="M 50 240 L 190 240 Q 205 240 205 220 Q 205 200 190 200 L 50 200 Z" fill="#A592FF"/>
+  <!-- Bottom Left Pill -->
+  <rect x="50" y="260" width="120" height="30" rx="15" fill="#A592FF"/>
+</svg>
