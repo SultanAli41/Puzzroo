@@ -598,10 +598,10 @@ body.dark-mode .theme-text-dark {
 }
 
 .hero-svg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  width: 109.7561%;
+  height: auto;
+  margin-left: -4.878%;
+  margin-top: -7.0122%;
   display: block;
   pointer-events: none;
 }
@@ -1311,7 +1311,6 @@ footer {
 
   .hero-svg-wrapper {
     max-width: 1520px;
-    aspect-ratio: 1520 / 380;
   }
 
   .cards-grid {
