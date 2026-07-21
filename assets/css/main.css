@@ -129,7 +129,7 @@ body {
 
 body {
   font-family: 'Urbanist', sans-serif;
-  background-color: var(--bg-body);
+  background-color: var(--bg-wrapper);
   color: var(--text-primary);
   display: flex;
   justify-content: center;
@@ -138,29 +138,29 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Page Container (Responsive up to 1440px) */
+/* Page Container (Full Widescreen Responsive) */
 .wrapper-div {
   width: 100%;
-  max-width: 1440px;
+  max-width: 100%;
   min-height: 100vh;
   background-color: var(--bg-wrapper);
   margin: 0 auto;
-  box-shadow: 0 0 30px var(--wrapper-shadow);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 /* Header Section */
 header {
   width: 100%;
-  max-width: 1440px;
   background-color: var(--bg-header);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 64px;
+  padding: 0 40px;
   transition: background-color 0.3s ease;
 }
 
@@ -598,10 +598,10 @@ body.dark-mode .theme-text-dark {
 }
 
 .hero-svg-img {
-  width: 109.7561%;
-  height: auto;
-  margin-left: -4.878%;
-  margin-top: -7.0122%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
   pointer-events: none;
 }
@@ -609,11 +609,10 @@ body.dark-mode .theme-text-dark {
 /* Main Content Layout */
 main {
   width: 100%;
-  max-width: 1440px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 64px 0 64px;
+  padding: 40px 40px 0 40px;
   gap: 40px;
   flex: 1;
 }
@@ -1073,15 +1072,13 @@ body.dark-mode .game-status-img {
 /* Footer Section */
 footer {
   width: 100%;
-  max-width: 1440px;
-  height: 54px;
+  height: 64px;
   background-color: var(--footer-bg);
-  padding: 0 64px;
-  margin-top: 32px;
+  padding: 0 40px;
+  margin-top: 48px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  opacity: 1;
   border-top: 1px solid var(--footer-border);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -1290,5 +1287,53 @@ footer {
 
   .btn-play {
     font-size: 15px;
+  }
+}
+
+/* ==========================================================================
+   Ultra-Wide & Large Desktop Monitors (1600px - 4K Displays)
+   ========================================================================== */
+@media (min-width: 1600px) {
+  header,
+  main {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .navbar,
+  .hero-section,
+  .games-section,
+  .premium-card,
+  .faqs-section,
+  .footer-container {
+    max-width: 1520px;
+  }
+
+  .hero-svg-wrapper {
+    max-width: 1520px;
+    aspect-ratio: 1520 / 380;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 480px));
+    gap: 40px;
+  }
+
+  .card-item {
+    max-width: 480px;
+    min-height: 560px;
+    padding: 36px;
+  }
+
+  .card-image-wrapper {
+    max-width: 408px;
+  }
+
+  .section-title {
+    font-size: 48px;
+  }
+
+  .premium-heading-desktop {
+    font-size: 42px;
   }
 }

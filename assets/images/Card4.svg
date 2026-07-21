@@ -1,9 +1,40 @@
 <svg width="338" height="339" viewBox="0 0 338 339" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="338" height="339" rx="14.6" fill="#F0EDFF"/>
-  <!-- Top & Left Outer Track -->
-  <path d="M 50 200 L 50 60 Q 50 50 60 50 L 280 50 Q 290 50 290 60 L 290 280 Q 290 290 280 290 L 240 290 Q 230 290 230 280 L 230 110 Q 230 100 220 100 L 100 100 Q 90 100 90 110 L 90 200 Z" fill="#A592FF"/>
-  <!-- Middle Track -->
-  <path d="M 50 240 L 190 240 Q 205 240 205 220 Q 205 200 190 200 L 50 200 Z" fill="#A592FF"/>
-  <!-- Bottom Left Pill -->
-  <rect x="50" y="260" width="120" height="30" rx="15" fill="#A592FF"/>
+  <!-- Outer subtle dashed frame -->
+  <rect x="2" y="2" width="334" height="335" rx="14" stroke="#6949FF" stroke-width="2.5" stroke-dasharray="6 6" stroke-opacity="0.25"/>
+
+  <!-- Connecting Path 1 (Purple - Top-Left to Mid-Right) -->
+  <path d="M 64 64 L 170 64 Q 204 64 204 98 L 204 170 Q 204 204 238 204 L 274 204" stroke="#6949FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Connecting Path 2 (Medium Purple - Bottom-Left to Top-Right) -->
+  <path d="M 64 274 L 64 170 Q 64 136 98 136 L 204 136 Q 238 136 238 102 L 238 64" stroke="#876DFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Connecting Path 3 (Soft Purple - Bottom-Mid to Top-Right Node) -->
+  <path d="M 124 274 L 214 274 Q 274 274 274 214 L 274 124" stroke="#A592FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Dots & Rings -->
+  <!-- Path 1 Nodes (Purple) -->
+  <circle cx="64" cy="64" r="18" fill="#6949FF"/>
+  <circle cx="64" cy="64" r="7" fill="#FFFFFF"/>
+
+  <circle cx="274" cy="204" r="18" fill="#6949FF"/>
+  <circle cx="274" cy="204" r="7" fill="#FFFFFF"/>
+
+  <!-- Path 2 Nodes (Medium Purple) -->
+  <circle cx="64" cy="274" r="18" fill="#876DFF"/>
+  <circle cx="64" cy="274" r="7" fill="#FFFFFF"/>
+
+  <circle cx="238" cy="64" r="18" fill="#876DFF"/>
+  <circle cx="238" cy="64" r="7" fill="#FFFFFF"/>
+
+  <!-- Path 3 Nodes (Soft Purple) -->
+  <circle cx="124" cy="274" r="18" fill="#A592FF"/>
+  <circle cx="124" cy="274" r="7" fill="#FFFFFF"/>
+
+  <circle cx="274" cy="124" r="18" fill="#A592FF"/>
+  <circle cx="274" cy="124" r="7" fill="#FFFFFF"/>
+
+  <!-- Decorative Inner Accent Dots -->
+  <circle cx="170" cy="64" r="6" fill="#FFFFFF" fill-opacity="0.8"/>
+  <circle cx="204" cy="136" r="6" fill="#FFFFFF" fill-opacity="0.8"/>
+  <circle cx="214" cy="274" r="6" fill="#FFFFFF" fill-opacity="0.8"/>
 </svg>
