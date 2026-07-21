@@ -45,7 +45,56 @@
           <a href="#signup" class="btn-signup">Sign up</a>
           <a href="#login" class="btn-login">Login</a>
         </div>
+        <!-- Mobile Menu Toggle Button (24px x 21px Icon) -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="hamburger-icon" width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.45833 2.91667H21.875C22.75 2.91667 23.3333 2.33333 23.3333 1.45833C23.3333 0.583333 22.75 0 21.875 0H1.45833C0.583333 0 0 0.583333 0 1.45833C0 2.33333 0.583333 2.91667 1.45833 2.91667ZM1.45833 11.6667H21.875C22.75 11.6667 23.3333 11.0833 23.3333 10.2083C23.3333 9.33333 22.75 8.75 21.875 8.75H1.45833C0.583333 8.75 0 9.33333 0 10.2083C0 11.0833 0.583333 11.6667 1.45833 11.6667ZM1.45833 20.4167H21.875C22.75 20.4167 23.3333 19.8333 23.3333 18.9583C23.3333 18.0833 22.75 17.5 21.875 17.5H1.45833C0.583333 17.5 0 18.0833 0 18.9583C0 19.8333 0.583333 20.4167 1.45833 20.4167Z" fill="currentColor"/>
+          </svg>
+        </button>
       </nav>
+
+      <!-- Mobile Navigation Overlay & Drawer -->
+      <div id="mobile-nav-backdrop" class="mobile-nav-backdrop"></div>
+      <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+        <div class="mobile-drawer-header">
+          <div class="nav-brand">
+            <img src="assets/images/Logo.svg" alt="Puzzroo Logo" class="logo-img">
+            <span class="brand-text">Puzzroo</span>
+          </div>
+          <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mobile-drawer-body">
+          <ul class="mobile-menu-links">
+            <li><a href="#" class="mobile-link active">Home</a></li>
+            <li><a href="#games" class="mobile-link">Free Games</a></li>
+            <li><a href="#premium" class="mobile-link">Premium</a></li>
+            <li><a href="#faqs" class="mobile-link">FAQs</a></li>
+          </ul>
+
+          <div class="mobile-drawer-divider"></div>
+
+          <!-- Theme Mode Switcher in Mobile Drawer -->
+          <div class="mobile-theme-row">
+            <span class="mobile-theme-label">Appearance</span>
+            <button id="mobile-theme-toggle" class="mobile-theme-toggle-btn">
+              <span class="theme-text-light">Light</span>
+              <span class="theme-text-dark">Dark</span>
+            </button>
+          </div>
+
+          <!-- Action Buttons (Sign Up & Login) -->
+          <div class="mobile-drawer-actions">
+            <a href="#login" class="mobile-btn-login">Login</a>
+            <a href="#signup" class="mobile-btn-signup">Sign up</a>
+          </div>
+        </div>
+      </div>
 
       <!-- Hero Section (1312px x 352px, Radius 12px) -->
       <div class="hero-section">

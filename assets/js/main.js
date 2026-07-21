@@ -46,6 +46,81 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
+     Mobile Navigation Drawer Management
+     ========================================================================== */
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-btn-login, .mobile-btn-signup');
+
+  const openMobileMenu = () => {
+    if (mobileNavDrawer && mobileNavBackdrop) {
+      mobileNavDrawer.classList.add('open');
+      mobileNavBackdrop.classList.add('active');
+      mobileNavDrawer.setAttribute('aria-hidden', 'false');
+      if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeMobileMenu = () => {
+    if (mobileNavDrawer && mobileNavBackdrop) {
+      mobileNavDrawer.classList.remove('open');
+      mobileNavBackdrop.classList.remove('active');
+      mobileNavDrawer.setAttribute('aria-hidden', 'true');
+      if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  };
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileNavDrawer && mobileNavDrawer.classList.contains('open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+  }
+
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+  }
+
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+  }
+
+  // Close menu when clicking links inside drawer
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
+  // Handle Escape key to close mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Mobile Theme Toggle sync
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', () => {
+      const currentTheme =
+        document.documentElement.getAttribute('data-theme') ||
+        (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      setSavedTheme(nextTheme);
+    });
+  }
+
+  /* ==========================================================================
      FAQ Accordion Interactivity
      ========================================================================== */
   const faqItems = document.querySelectorAll('.faq-item');
