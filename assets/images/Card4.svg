@@ -1,40 +1,9 @@
-<svg width="338" height="339" viewBox="0 0 338 339" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer subtle dashed frame -->
-  <rect x="2" y="2" width="334" height="335" rx="14" stroke="#6949FF" stroke-width="2.5" stroke-dasharray="6 6" stroke-opacity="0.25"/>
-
-  <!-- Connecting Path 1 (Purple - Top-Left to Mid-Right) -->
-  <path d="M 64 64 L 170 64 Q 204 64 204 98 L 204 170 Q 204 204 238 204 L 274 204" stroke="#6949FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Connecting Path 2 (Medium Purple - Bottom-Left to Top-Right) -->
-  <path d="M 64 274 L 64 170 Q 64 136 98 136 L 204 136 Q 238 136 238 102 L 238 64" stroke="#876DFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Connecting Path 3 (Soft Purple - Bottom-Mid to Top-Right Node) -->
-  <path d="M 124 274 L 214 274 Q 274 274 274 214 L 274 124" stroke="#A592FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Dots & Rings -->
-  <!-- Path 1 Nodes (Purple) -->
-  <circle cx="64" cy="64" r="18" fill="#6949FF"/>
-  <circle cx="64" cy="64" r="7" fill="#FFFFFF"/>
-
-  <circle cx="274" cy="204" r="18" fill="#6949FF"/>
-  <circle cx="274" cy="204" r="7" fill="#FFFFFF"/>
-
-  <!-- Path 2 Nodes (Medium Purple) -->
-  <circle cx="64" cy="274" r="18" fill="#876DFF"/>
-  <circle cx="64" cy="274" r="7" fill="#FFFFFF"/>
-
-  <circle cx="238" cy="64" r="18" fill="#876DFF"/>
-  <circle cx="238" cy="64" r="7" fill="#FFFFFF"/>
-
-  <!-- Path 3 Nodes (Soft Purple) -->
-  <circle cx="124" cy="274" r="18" fill="#A592FF"/>
-  <circle cx="124" cy="274" r="7" fill="#FFFFFF"/>
-
-  <circle cx="274" cy="124" r="18" fill="#A592FF"/>
-  <circle cx="274" cy="124" r="7" fill="#FFFFFF"/>
-
-  <!-- Decorative Inner Accent Dots -->
-  <circle cx="170" cy="64" r="6" fill="#FFFFFF" fill-opacity="0.8"/>
-  <circle cx="204" cy="136" r="6" fill="#FFFFFF" fill-opacity="0.8"/>
-  <circle cx="214" cy="274" r="6" fill="#FFFFFF" fill-opacity="0.8"/>
+<svg width="340" height="339" viewBox="0 0 340 339" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M87.6855 301.302C87.6855 280.695 104.391 263.989 124.999 263.989H248.132C250.192 263.989 251.863 265.66 251.863 267.721V334.884C251.863 336.945 250.192 338.615 248.132 338.615H124.999C104.391 338.615 87.6855 321.91 87.6855 301.302Z" fill="#876DFF"/>
+<path d="M0 37.313C0 16.7056 16.7056 0 37.313 0H319.026V74.626H37.313C16.7056 74.626 0 57.9204 0 37.313Z" fill="#C3B6FF"/>
+<path d="M302.235 337.683C281.627 337.683 264.922 320.978 264.922 300.37L264.922 0.000335693L335.817 0.000336539C337.877 0.000336563 339.548 1.6709 339.548 3.73163L339.548 300.37C339.548 320.977 322.842 337.683 302.235 337.683Z" fill="#C3B6FF"/>
+<path d="M0 124.999C0 104.391 16.7056 87.6855 37.313 87.6855H231.341V162.312H37.313C16.7056 162.312 0 145.606 0 124.999Z" fill="#A592FF"/>
+<rect x="16.791" y="175.372" width="222.012" height="74.626" fill="#A592FF"/>
+<path d="M37.313 337.683C16.7056 337.683 1.99212e-07 320.978 4.44953e-07 300.37L1.89105e-06 179.103C1.91563e-06 177.042 1.67056 175.372 3.7313 175.372L74.626 175.372L74.626 300.37C74.626 320.977 57.9204 337.683 37.313 337.683Z" fill="#A592FF"/>
+<path d="M177.641 249.657L177.641 87.3456L248.535 87.3456C250.596 87.3456 252.267 89.0162 252.267 91.0769L252.267 245.926C252.267 247.987 250.596 249.657 248.535 249.657L177.641 249.657Z" fill="#A592FF"/>
 </svg>

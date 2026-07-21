@@ -646,8 +646,8 @@ body.dark-mode .section-title {
 }
 
 .title-sparkle-img {
-  width: 55px;
-  height: 55px;
+  width: 1.25em;
+  height: 1.25em;
   object-fit: contain;
   vertical-align: middle;
   flex-shrink: 0;
@@ -705,6 +705,34 @@ body.dark-mode .section-title {
   object-fit: contain;
   opacity: 1;
   display: block;
+}
+
+/* Theme Adaptive Card Images (Light Mode vs Dark Mode) */
+.card-img-dark {
+  display: none !important;
+}
+
+.card-img-light {
+  display: block !important;
+}
+
+[data-theme="dark"] .card-img-dark,
+body.dark-mode .card-img-dark {
+  display: block !important;
+}
+
+[data-theme="dark"] .card-img-light,
+body.dark-mode .card-img-light {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .card-img-dark {
+    display: block !important;
+  }
+  :root:not([data-theme="light"]) .card-img-light {
+    display: none !important;
+  }
 }
 
 /* Card Info Row */
