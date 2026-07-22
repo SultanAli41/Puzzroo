@@ -1289,6 +1289,7 @@ footer {
 
   .premium-heading-mobile {
     display: flex;
+    color: #FFFFFF !important;
   }
 
   .premium-card {
@@ -1297,10 +1298,13 @@ footer {
     min-height: auto;
     border-radius: 24px;
     padding-bottom: 220px;
+    background-color: var(--primary-purple) !important;
+    border-color: transparent !important;
   }
 
   .premium-content-left {
     padding: 36px 24px 20px 24px;
+    background-color: transparent !important;
   }
 
   .premium-heading-desktop {
@@ -1319,11 +1323,19 @@ footer {
   }
 
   .feature-check-icon svg .check-bg {
-    fill: #FFFFFF;
+    fill: #FFFFFF !important;
   }
 
   .feature-check-icon svg .check-mark {
-    stroke: #6949FF;
+    stroke: #6949FF !important;
+  }
+
+  .feature-text {
+    color: #FFFFFF !important;
+  }
+
+  .premium-bg-lines path {
+    stroke: rgba(255, 255, 255, 0.25) !important;
   }
 
   .premium-illustration-right {
