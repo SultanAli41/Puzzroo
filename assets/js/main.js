@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
       themeToggleBtn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
       themeToggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+
+      const toggleTextEl = themeToggleBtn.querySelector('.theme-toggle-text');
+      if (toggleTextEl) {
+        toggleTextEl.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+      }
     }
   };
 

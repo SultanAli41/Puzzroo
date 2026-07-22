@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css?v=5">
 </head>
 
 <body>
@@ -23,37 +23,28 @@
           <img src="assets/images/Logo.svg" alt="Puzzroo Logo" class="logo-img">
           <span class="brand-text">Puzzroo</span>
         </a>
-        <div class="nav-actions">
+        <div class="nav-right-container">
+          <div class="nav-desktop-buttons">
+            <a href="#signup" class="btn-signup">Sign up</a>
+            <a href="#login" class="btn-login">Login</a>
+          </div>
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle dark/light mode">
-            <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            <span class="theme-toggle-text">Light Mode</span>
+            <img src="assets/images/Lightmode.svg" alt="Light Mode" class="theme-icon light-icon" width="32"
+              height="32">
+            <img src="assets/images/Darkmode.svg" alt="Dark Mode" class="theme-icon dark-icon" width="32" height="32">
+          </button>
+          <!-- Mobile Menu Toggle Button (24px x 21px Icon) -->
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu"
+            aria-expanded="false">
+            <svg class="hamburger-icon" width="24" height="21" viewBox="0 0 24 21" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.45833 2.91667H21.875C22.75 2.91667 23.3333 2.33333 23.3333 1.45833C23.3333 0.583333 22.75 0 21.875 0H1.45833C0.583333 0 0 0.583333 0 1.45833C0 2.33333 0.583333 2.91667 1.45833 2.91667ZM1.45833 11.6667H21.875C22.75 11.6667 23.3333 11.0833 23.3333 10.2083C23.3333 9.33333 22.75 8.75 21.875 8.75H1.45833C0.583333 8.75 0 9.33333 0 10.2083C0 11.0833 0.583333 11.6667 1.45833 11.6667ZM1.45833 20.4167H21.875C22.75 20.4167 23.3333 19.8333 23.3333 18.9583C23.3333 18.0833 22.75 17.5 21.875 17.5H1.45833C0.583333 17.5 0 18.0833 0 18.9583C0 19.8333 0.583333 20.4167 1.45833 20.4167Z"
+                fill="currentColor" />
             </svg>
           </button>
-          <a href="#signup" class="btn-signup">Sign up</a>
-          <a href="#login" class="btn-login">Login</a>
         </div>
-        <!-- Mobile Menu Toggle Button (24px x 21px Icon) -->
-        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg class="hamburger-icon" width="24" height="21" viewBox="0 0 24 21" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1.45833 2.91667H21.875C22.75 2.91667 23.3333 2.33333 23.3333 1.45833C23.3333 0.583333 22.75 0 21.875 0H1.45833C0.583333 0 0 0.583333 0 1.45833C0 2.33333 0.583333 2.91667 1.45833 2.91667ZM1.45833 11.6667H21.875C22.75 11.6667 23.3333 11.0833 23.3333 10.2083C23.3333 9.33333 22.75 8.75 21.875 8.75H1.45833C0.583333 8.75 0 9.33333 0 10.2083C0 11.0833 0.583333 11.6667 1.45833 11.6667ZM1.45833 20.4167H21.875C22.75 20.4167 23.3333 19.8333 23.3333 18.9583C23.3333 18.0833 22.75 17.5 21.875 17.5H1.45833C0.583333 17.5 0 18.0833 0 18.9583C0 19.8333 0.583333 20.4167 1.45833 20.4167Z"
-              fill="currentColor" />
-          </svg>
-        </button>
       </nav>
 
       <!-- Mobile Navigation Overlay & Drawer -->
@@ -196,26 +187,17 @@
       <section class="premium-section" id="premium">
         <!-- Mobile Heading (shown on mobile viewport) -->
         <h2 class="premium-heading-mobile">
-          <img src="assets/images/Ellipse.svg" alt="Sparkle" class="heading-sparkle-icon" width="28" height="28">
+          <img src="assets/images/Ellipse.svg" alt="Sparkle" class="heading-sparkle-icon" width="55" height="55">
           Upgrade to get Exclusive Access.
         </h2>
 
         <div class="premium-card">
-          <!-- Background Wavy Contour Lines -->
-          <svg class="premium-bg-lines" viewBox="0 0 1312 557" fill="none" preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M-100 80 Q 250 -20, 600 160 T 1350 60" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
-            <path d="M-100 160 Q 250 60, 600 240 T 1350 140" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
-            <path d="M-100 240 Q 250 140, 600 320 T 1350 220" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
-            <path d="M-100 320 Q 250 220, 600 400 T 1350 300" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
-            <path d="M-100 400 Q 250 300, 600 480 T 1350 380" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
-          </svg>
 
           <!-- Left Content Block -->
           <div class="premium-content-left">
             <h2 class="premium-heading-desktop">
               Upgrade To Get Exclusive Access.
-              <img src="assets/images/Ellipse.svg" alt="Sparkle" class="heading-sparkle-icon" width="32" height="32">
+              <img src="assets/images/Ellipse.svg" alt="Sparkle" class="heading-sparkle-icon" width="55" height="55">
             </h2>
 
             <ul class="premium-features-grid">
@@ -389,26 +371,20 @@
             </ul>
           </div>
 
-          <!-- Right Illustration Block (Sparkles & Floating Circles) -->
+          <!-- Right Illustration Block (Premium Right SVG Image) -->
           <div class="premium-illustration-right">
-            <svg class="sparkle-star-main" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M70 0C70 38.6599 101.34 70 140 70C101.34 70 70 101.34 70 140C70 101.34 38.6599 70 0 70C38.6599 70 70 38.6599 70 0Z"
-                fill="white" />
-            </svg>
-            <svg class="sparkle-star-sec" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M40 0C40 22.0914 57.9086 40 80 40C57.9086 40 40 57.9086 40 80C40 57.9086 22.0914 40 0 40C22.0914 40 40 22.0914 40 0Z"
-                fill="white" />
-            </svg>
-            <span class="sparkle-dot p-dot-1"></span>
-            <span class="sparkle-dot p-dot-2"></span>
-            <span class="sparkle-dot p-dot-3"></span>
-            <span class="sparkle-dot p-dot-4"></span>
-            <span class="sparkle-dot p-dot-5"></span>
-            <span class="sparkle-dot p-dot-6"></span>
-            <span class="sparkle-dot p-dot-7"></span>
+            <img src="assets/images/Premium-right.svg" alt="Premium Exclusive Access" class="premium-right-img">
           </div>
+
+          <!-- Background Wavy Contour Lines (moved to end for proper stacking over illustration) -->
+          <svg class="premium-bg-lines" viewBox="0 0 1312 557" fill="none" preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M-100 80 Q 250 -20, 600 160 T 1350 60" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
+            <path d="M-100 160 Q 250 60, 600 240 T 1350 140" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
+            <path d="M-100 240 Q 250 140, 600 320 T 1350 220" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
+            <path d="M-100 320 Q 250 220, 600 400 T 1350 300" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
+            <path d="M-100 400 Q 250 300, 600 480 T 1350 380" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" />
+          </svg>
         </div>
       </section>
 
@@ -544,7 +520,7 @@
     </footer>
   </div>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=2"></script>
 </body>
 
 </html>
