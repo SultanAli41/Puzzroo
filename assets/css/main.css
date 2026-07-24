@@ -1430,6 +1430,21 @@ footer {
 /* ==========================================================================
    Lobby Page Styles
    ========================================================================== */
+.lobby-page-body .brand-text {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #212121;
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .lobby-page-body .brand-text,
+body.dark-mode .lobby-page-body .brand-text {
+  color: #F8F7FF;
+}
+
 .lobby-container {
   width: 100%;
   max-width: 680px;
@@ -1451,8 +1466,8 @@ footer {
 }
 
 .lobby-icon-wrapper {
-  width: 120px;
-  height: 120px;
+  width: 101px;
+  height: 101px;
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--card-bg);
@@ -1460,23 +1475,25 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 0;
 }
 
 .lobby-icon-img {
-  width: 100%;
-  height: 100%;
+  width: 66px;
+  height: 66px;
   object-fit: contain;
 }
 
 .lobby-title {
   font-family: 'Urbanist', sans-serif;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: var(--text-primary);
-  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: none;
 }
 
 .difficulty-row {
@@ -1489,64 +1506,64 @@ footer {
 }
 
 .difficulty-label {
-  font-size: 18px;
-  font-weight: 600;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .difficulty-tabs {
   display: flex;
-  gap: 24px;
-  border-bottom: 2px solid var(--faq-border);
-  padding-bottom: 8px;
+  gap: 8px;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .difficulty-tab {
   background: none;
   border: none;
   font-family: 'Urbanist', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  color: #9E9E9E;
   cursor: pointer;
-  padding: 4px 8px;
-  position: relative;
-  transition: color 0.2s ease;
+  padding: 8px 16px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
 }
 
 .difficulty-tab:hover {
-  color: var(--primary-purple);
+  color: #6949FF;
+  background-color: rgba(105, 73, 255, 0.08);
 }
 
 .difficulty-tab.active {
-  color: var(--primary-purple);
+  background-color: #6949FF;
+  color: #FAFAFA;
 }
 
 .difficulty-tab.active::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background-color: var(--primary-purple);
-  border-radius: 9999px;
+  display: none;
 }
 
 .lobby-play-btn {
-  width: 100%;
-  max-width: 350px;
-  height: 52px;
+  width: 382px;
+  height: 46px;
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-color: var(--primary-purple);
-  color: #FFFFFF;
+  background-color: #6949FF;
+  color: #FAFAFA;
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  border-radius: 9999px;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.2px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 100px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -1585,28 +1602,47 @@ footer {
 .details-heading {
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
-  font-size: 22px;
-  color: var(--text-primary);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: #424242;
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .details-heading,
+body.dark-mode .details-heading {
+  color: #F5F5F5;
 }
 
 .details-text {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-secondary);
+  font-family: 'Urbanist', sans-serif;
   font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  vertical-align: middle;
+  color: #424242;
+  transition: color 0.3s ease;
 }
 
-.details-text.font-medium {
-  font-weight: 600;
+[data-theme="dark"] .details-text,
+body.dark-mode .details-text {
+  color: #AAA6C8;
 }
 
 .rules-box {
-  background-color: var(--faq-hover-bg);
-  border: 1px solid var(--faq-hover-border);
+  background-color: #F5F5F5;
+  border: none;
   border-radius: 12px;
   padding: 24px;
   margin-top: 8px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] .rules-box,
+body.dark-mode .rules-box {
+  background-color: #1F222A;
 }
 
 .rules-list {
@@ -1618,17 +1654,26 @@ footer {
 }
 
 .rules-list li {
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--text-secondary);
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  vertical-align: middle;
+  color: #616161;
   position: relative;
   padding-left: 20px;
-  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .rules-list li,
+body.dark-mode .rules-list li {
+  color: #BDBDBD;
 }
 
 .rules-list li::before {
   content: "•";
-  color: var(--text-secondary);
+  color: currentColor;
   font-weight: bold;
   display: inline-block;
   width: 1em;
@@ -1637,8 +1682,22 @@ footer {
   left: 10px;
 }
 
+.lobby-page-body footer {
+  background-color: #F0EDFF;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"] .lobby-page-body footer,
+body.dark-mode .lobby-page-body footer {
+  background-color: #1F222A;
+  border-color: rgba(105, 73, 255, 0.15);
+}
+
 /* Responsive adjustment for lobby page */
 @media (max-width: 768px) {
+  .lobby-page-body .brand-text {
+    font-size: 28px;
+  }
   .lobby-container {
     padding-left: 20px;
     padding-right: 20px;
@@ -1647,6 +1706,6 @@ footer {
     font-size: 32px;
   }
   .details-heading {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
