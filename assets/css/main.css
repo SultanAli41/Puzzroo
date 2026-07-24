@@ -714,7 +714,7 @@ body.dark-mode .section-title {
   width: 100%;
   max-width: 339.55px;
   height: auto;
-  aspect-ratio: 339.55 / 338.62;
+  aspect-ratio: 1;
   border-radius: 12.31px;
   overflow: hidden;
   display: flex;
