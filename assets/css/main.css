@@ -1776,3 +1776,471 @@ body.dark-mode .lobby-page-body footer {
     padding: 20px 24px;
   }
 }
+
+/* ==========================================================================
+   Game Page Styles (Sudoku)
+   ========================================================================== */
+
+/* Theme variables for the Sudoku grid & keypad */
+:root {
+  --cell-selected-bg: #D8D2FF;
+  --cell-highlight-bg: #F0EDFF;
+  --cell-hover-bg: #E4DCFF;
+  --btn-keypad-bg: #F5F5F5;
+  --btn-keypad-color: #212121;
+  --btn-keypad-hover: #E0E0E0;
+}
+
+[data-theme="dark"],
+body.dark-mode {
+  --cell-selected-bg: #3B3363;
+  --cell-highlight-bg: #211D39;
+  --cell-hover-bg: #302A52;
+  --btn-keypad-bg: #1F222A;
+  --btn-keypad-color: #F8F7FF;
+  --btn-keypad-hover: #2C313E;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 1312px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+/* Sudoku Layout on Desktop */
+.game-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 64px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* Sudoku Board (Game Box) - Constrained to 448x448px on Desktop */
+.sudoku-board-wrapper {
+  width: 448px;
+  height: 448px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 448px;
+  height: 448px;
+  background-color: var(--bg-wrapper);
+  border: 3px solid var(--text-primary);
+  box-sizing: border-box;
+  user-select: none;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Individual Cell Styling */
+.sudoku-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background-color: transparent;
+  border-right: 1px solid var(--faq-divider);
+  border-bottom: 1px solid var(--faq-divider);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.3s ease;
+}
+
+/* Thicker borders for 3x3 grids */
+.sudoku-cell:nth-child(3n) {
+  border-right: 3px solid var(--text-primary);
+}
+.sudoku-cell:nth-child(9n) {
+  border-right: none; /* remove right border for final column */
+}
+/* Rows 3 and 6 should have thick bottom border (0-indexed row 2 and 5) */
+.sudoku-cell.row-2,
+.sudoku-cell.row-5 {
+  border-bottom: 3px solid var(--text-primary);
+}
+/* Final row has no bottom border */
+.sudoku-cell.row-8 {
+  border-bottom: none;
+}
+
+/* Cell States */
+.sudoku-cell.cell-original {
+  font-weight: 800;
+}
+
+.sudoku-cell.cell-user {
+  color: var(--primary-purple);
+}
+
+.sudoku-cell.cell-error {
+  color: #E53935;
+  background-color: rgba(229, 57, 53, 0.15);
+}
+[data-theme="dark"] .sudoku-cell.cell-error,
+body.dark-mode .sudoku-cell.cell-error {
+  color: #FF5252;
+  background-color: rgba(255, 82, 82, 0.15);
+}
+
+.sudoku-cell:hover:not(.cell-error) {
+  background-color: var(--cell-hover-bg);
+}
+
+.sudoku-cell.cell-selected {
+  background-color: var(--cell-selected-bg) !important;
+}
+
+.sudoku-cell.cell-highlighted:not(.cell-selected):not(.cell-error) {
+  background-color: var(--cell-highlight-bg);
+}
+
+.sudoku-cell.cell-same-number:not(.cell-selected):not(.cell-error) {
+  background-color: var(--cell-hover-bg);
+  font-weight: 800;
+}
+
+/* Notes (Pencil Marks) */
+.notes-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.note-digit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
+/* Controls Column (Desktop) */
+.game-controls {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.score-display {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.2;
+}
+
+.score-value {
+  color: var(--primary-purple);
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--faq-border);
+  padding-bottom: 12px;
+}
+
+.stat-item span {
+  color: var(--primary-purple);
+}
+
+/* Tools Buttons */
+.tools-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.tool-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  color: var(--primary-purple);
+}
+
+.tool-btn:hover {
+  background-color: var(--toggle-hover-bg);
+  transform: scale(1.05);
+}
+
+.tool-btn:active {
+  transform: scale(0.95);
+}
+
+.tool-btn.active {
+  background-color: var(--primary-purple);
+  color: #FFFFFF !important;
+}
+
+.tool-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.tool-btn-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--primary-purple);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-wrapper);
+}
+
+.tool-btn.active .tool-btn-badge {
+  background-color: #FFFFFF;
+  color: var(--primary-purple);
+  border-color: var(--primary-purple);
+}
+
+/* Keypad Layout */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.keypad-btn {
+  height: 56px;
+  border-radius: 12px;
+  background-color: var(--btn-keypad-bg);
+  border: none;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--btn-keypad-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.keypad-btn:hover {
+  background-color: var(--btn-keypad-hover);
+}
+
+.keypad-btn:active {
+  transform: scale(0.95);
+}
+
+/* Game Over & Win Screen Overlay */
+.game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(19, 17, 30, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.game-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-content {
+  background-color: var(--bg-wrapper);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 40px 48px;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.overlay-title {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--text-primary);
+}
+
+.overlay-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.overlay-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 100px;
+  background-color: var(--primary-purple);
+  color: #FAFAFA;
+  border: none;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.overlay-btn:hover {
+  background-color: var(--primary-purple-hover);
+}
+
+/* Media Queries for Game Page Layout */
+@media (max-width: 768px) {
+  .game-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  /* Board should scale nicely to fit screen on mobile, maintaining square aspect ratio */
+  .sudoku-board-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    max-width: 448px;
+  }
+
+  .sudoku-board {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sudoku-cell {
+    font-size: 20px;
+  }
+
+  .notes-grid {
+    padding: 2px;
+  }
+
+  .note-digit {
+    font-size: 8px;
+  }
+
+  .game-controls {
+    width: 100%;
+    max-width: 448px;
+    gap: 16px;
+  }
+
+  /* Row for stats on mobile */
+  .stats-row {
+    justify-content: space-between;
+    font-size: 15px;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 4px;
+  }
+
+  /* Hide separate score display on mobile, show it in stats row */
+  .game-controls > .score-display {
+    display: none;
+  }
+
+  .stats-row .score-display {
+    display: flex;
+    font-size: 15px;
+  }
+
+  /* Single row for keypad on mobile */
+  .keypad-grid {
+    grid-template-columns: repeat(9, 1fr);
+    gap: 6px;
+  }
+
+  .keypad-btn {
+    height: 40px;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+
+  /* Tools layout on mobile */
+  .tools-row {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .tool-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .tool-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* New game button */
+  .game-controls .lobby-play-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+}

@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puzzroo - Sudoku Lobby</title>
+  <title>Puzzroo - Play Sudoku</title>
   <!-- Google Fonts: Urbanist -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/main.css?v=7">
+  <link rel="stylesheet" href="assets/css/main.css?v=8">
 </head>
 
 <body class="lobby-page-body">
@@ -94,66 +94,85 @@
 
     <!-- Main Content Section -->
     <main>
-      <div class="lobby-container">
+      <div class="game-container">
         <!-- Sudoku Header/Card Info -->
-        <div class="lobby-card">
+        <div class="lobby-card" style="gap: 16px; margin-bottom: 8px;">
           <div class="lobby-icon-wrapper">
             <img src="assets/images/Card3.svg" alt="Sudoku Icon" class="lobby-icon-img">
           </div>
-          <h1 class="lobby-title">Sudoku</h1>
-
-          <div class="difficulty-row">
-            <span class="difficulty-label">Difficulty:</span>
-            <div class="difficulty-tabs">
-              <button class="difficulty-tab active" data-difficulty="easy">Easy</button>
-              <button class="difficulty-tab" data-difficulty="medium">Medium</button>
-              <button class="difficulty-tab" data-difficulty="hard">Hard</button>
-            </div>
-          </div>
-
-          <button class="lobby-play-btn">
-            Play
-            <svg class="play-arrow" width="12" height="14" viewBox="0 0 12 14" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.5 1.5L10.5 7L1.5 12.5V1.5Z" fill="currentColor" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
+          <h1 class="lobby-title">SUDOKU</h1>
         </div>
 
-        <!-- Sudoku Information & Instructions -->
-        <div class="lobby-details">
-          <div class="details-section">
-            <h2 class="details-heading">About Sudoku</h2>
-            <p class="details-text">
-              The popular Japanese puzzle game Sudoku is based on the logical placement of numbers. An online game of
-              logic, Sudoku doesn’t require any calculation nor special math skills; all that is needed are brains and
-              concentration.
-            </p>
-          </div>
-
-          <div class="details-section">
-            <h2 class="details-heading">How to play Sudoku</h2>
-            <p class="details-text">
-              The goal of Sudoku is to fill in a 9×9 grid with digits so that each column, row, and 3×3 section contain
-              the numbers between 1 to 9. At the beginning of the game, the 9×9 grid will have some of the squares
-              filled in. Your job is to use logic to fill in the missing digits and complete the grid. Don’t forget, a
-              move is incorrect if:
-            </p>
-            <div class="rules-box">
-              <ul class="rules-list">
-                <li>Any row contains more than one of the same number from 1 to 9</li>
-                <li>Any column contains more than one of the same number from 1 to 9</li>
-                <li>Any 3×3 grid contains more than one of the same number from 1 to 9</li>
-              </ul>
+        <!-- Sudoku Play Area Layout -->
+        <div class="game-layout">
+          <!-- Left side: Game Box (Board) -->
+          <div class="sudoku-board-wrapper">
+            <div id="sudoku-board" class="sudoku-board">
+              <!-- Grid cells will be generated dynamically -->
             </div>
           </div>
 
-          <div class="details-section">
-            <h2 class="details-heading">Keyboard controls</h2>
-            <p class="details-text font-medium">
-              Use the arrow keys to navigate and spacebar or return to flip tiles.
-            </p>
+          <!-- Right side (Desktop) / Bottom (Mobile): Controls -->
+          <div class="game-controls">
+            <!-- Score (Visible on Desktop only via CSS) -->
+            <div class="score-display">
+              Score: <span id="score-val" class="score-value">0</span>
+            </div>
+
+            <!-- Row of stats (Mistakes, Score on Mobile, Time) -->
+            <div class="stats-row">
+              <div class="stat-item">Mistakes: <span id="mistakes-val">0/3</span></div>
+              <!-- Mobile only score view embedded inside stats-row -->
+              <div class="score-display" style="margin: 0;">Score: <span id="score-val-mobile" class="score-value">0</span></div>
+              <div class="stat-item">Time: <span id="timer-val">00:00</span></div>
+            </div>
+
+            <!-- Tools Row (Undo, Erase, Pencil, Hint) -->
+            <div class="tools-row">
+              <!-- Undo Button -->
+              <button id="tool-undo" class="tool-btn" aria-label="Undo last move" title="Undo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" fill="currentColor"/>
+                </svg>
+              </button>
+              <!-- Erase Button -->
+              <button id="tool-erase" class="tool-btn" aria-label="Erase cell content" title="Erase">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.24 7.56l4.2 4.2c.78.78.78 2.05 0 2.83L14.7 20.3c-.39.39-.9.59-1.41.59H6.24c-1.1 0-2-.9-2-2v-7.05c0-.51.2-1.02.59-1.41l7.05-7.05c.78-.78 2.05-.78 2.83 0l1.53 1.53zM8.24 19h4.46l5.72-5.72-4.46-4.46L8.24 14.54V19z" fill="currentColor"/>
+                </svg>
+              </button>
+              <!-- Pencil (Notes Mode) Button -->
+              <button id="tool-pencil" class="tool-btn" aria-label="Toggle notes mode" title="Pencil (Notes)">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/>
+                </svg>
+              </button>
+              <!-- Hint Button -->
+              <button id="tool-hint" class="tool-btn" aria-label="Reveal hint for selected cell" title="Hint">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1c-.2.13-.35.35-.35.6V16h-4v-2.3c0-.25-.15-.47-.35-.6C8.83 12.18 8 10.66 8 9c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.66-.83 3.18-2.15 4.1z" fill="currentColor"/>
+                </svg>
+                <span id="hint-badge" class="tool-btn-badge">3</span>
+              </button>
+            </div>
+
+            <!-- Keypad (1-9 Grid on Desktop, Horizontal Row on Mobile) -->
+            <div class="keypad-grid">
+              <button class="keypad-btn" data-val="1">1</button>
+              <button class="keypad-btn" data-val="2">2</button>
+              <button class="keypad-btn" data-val="3">3</button>
+              <button class="keypad-btn" data-val="4">4</button>
+              <button class="keypad-btn" data-val="5">5</button>
+              <button class="keypad-btn" data-val="6">6</button>
+              <button class="keypad-btn" data-val="7">7</button>
+              <button class="keypad-btn" data-val="8">8</button>
+              <button class="keypad-btn" data-val="9">9</button>
+            </div>
+
+            <!-- New Game Button -->
+            <button id="btn-new-game" class="lobby-play-btn">
+              New Game
+            </button>
           </div>
         </div>
       </div>
@@ -171,29 +190,26 @@
     </footer>
   </div>
 
-  <script src="assets/js/main.js?v=2"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Toggle active states for the difficulty tabs
-      const tabs = document.querySelectorAll('.difficulty-tab');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-        });
-      });
+  <!-- Game Over Overlay -->
+  <div id="game-over-overlay" class="game-overlay">
+    <div class="overlay-content">
+      <h2 class="overlay-title">Game Over</h2>
+      <p class="overlay-text">You have made 3 mistakes and lost this game. Don't give up! Try again and train your brain.</p>
+      <button id="btn-game-over-restart" class="overlay-btn">Try Again</button>
+    </div>
+  </div>
 
-      // Handle Play button click and redirect with selected difficulty
-      const playBtn = document.querySelector('.lobby-play-btn');
-      if (playBtn) {
-        playBtn.addEventListener('click', () => {
-          const activeTab = document.querySelector('.difficulty-tab.active');
-          const difficulty = activeTab ? activeTab.getAttribute('data-difficulty') : 'easy';
-          window.location.href = `game.html?difficulty=${difficulty}`;
-        });
-      }
-    });
-  </script>
+  <!-- Victory Overlay -->
+  <div id="victory-overlay" class="game-overlay">
+    <div class="overlay-content">
+      <h2 class="overlay-title">Congratulations!</h2>
+      <p class="overlay-text">You have successfully completed the Sudoku puzzle. Your score is <span id="final-score">0</span>!</p>
+      <button id="btn-victory-new-game" class="overlay-btn">Play Another Game</button>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/game.js?v=1"></script>
 </body>
 
 </html>
