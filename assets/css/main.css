@@ -1509,7 +1509,7 @@ body.dark-mode .lobby-page-body .brand-text {
   justify-content: center;
   gap: 20px;
   width: 100%;
-  max-width: 400px;
+  max-width: 480px;
 }
 
 .difficulty-label {
@@ -1528,10 +1528,17 @@ body.dark-mode .difficulty-label {
 
 .difficulty-tabs {
   display: flex;
-  gap: 12px;
+  gap: 0;
   padding-bottom: 0;
   position: relative;
   align-items: flex-end;
+  margin-bottom: 4px;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+[data-theme="dark"] .difficulty-tabs,
+body.dark-mode .difficulty-tabs {
+  border-bottom: 2px solid #2D274A;
 }
 
 .difficulty-tab {
@@ -1542,24 +1549,20 @@ body.dark-mode .difficulty-label {
   font-weight: 700;
   color: #9E9E9E;
   cursor: pointer;
-  padding: 8px 16px 8px 16px;
+  width: 100px;
+  padding: 8px 0;
   border-radius: 0;
-  border-bottom: 2px solid #E0E0E0;
   position: relative;
   transition: all 0.2s ease;
-}
-
-[data-theme="dark"] .difficulty-tab,
-body.dark-mode .difficulty-tab {
-  border-bottom: 2px solid #2D274A;
+  text-align: center;
 }
 
 .difficulty-tab::after {
   content: "";
   position: absolute;
   bottom: -2px;
-  left: 12px;
-  right: 12px;
+  left: 0;
+  right: 0;
   height: 4px;
   background-color: transparent;
   border-radius: 9999px;
@@ -1568,28 +1571,20 @@ body.dark-mode .difficulty-tab {
 
 .difficulty-tab:hover {
   color: #6949FF;
-  border-bottom: 2px solid #6949FF;
 }
 
 [data-theme="dark"] .difficulty-tab:hover,
 body.dark-mode .difficulty-tab:hover {
   color: #9E86FF;
-  border-bottom: 2px solid #9E86FF;
 }
 
 .difficulty-tab.active {
   color: #6949FF;
-  border-bottom: 2px solid transparent;
 }
 
 [data-theme="dark"] .difficulty-tab.active,
 body.dark-mode .difficulty-tab.active {
   color: #9E86FF;
-  border-bottom: 2px solid transparent;
-}
-
-.difficulty-tab.active:hover {
-  border-bottom: 2px solid transparent;
 }
 
 .difficulty-tab.active::after {
