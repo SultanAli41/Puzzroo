@@ -1789,6 +1789,8 @@ body.dark-mode .lobby-page-body footer {
   --btn-keypad-bg: #F5F5F5;
   --btn-keypad-color: #212121;
   --btn-keypad-hover: #E0E0E0;
+  --cell-block-accent: #F0EDFF;
+  --cell-text-color: #000000;
 }
 
 [data-theme="dark"],
@@ -1799,6 +1801,8 @@ body.dark-mode {
   --btn-keypad-bg: #1F222A;
   --btn-keypad-color: #F8F7FF;
   --btn-keypad-hover: #2C313E;
+  --cell-block-accent: #35383F;
+  --cell-text-color: #F5F5F5;
 }
 
 .game-container {
@@ -1855,15 +1859,20 @@ body.dark-mode {
   align-items: center;
   justify-content: center;
   font-family: 'Urbanist', sans-serif;
-  font-size: 24px;
+  font-size: 31.08px;
   font-weight: 700;
-  color: var(--text-primary);
+  line-height: 120%;
+  color: var(--cell-text-color);
   background-color: transparent;
   border-right: 1px solid var(--faq-divider);
   border-bottom: 1px solid var(--faq-divider);
   cursor: pointer;
   box-sizing: border-box;
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.3s ease;
+}
+
+.sudoku-cell.cell-block-accent {
+  background-color: var(--cell-block-accent);
 }
 
 /* Thicker borders for 3x3 grids */
@@ -1957,8 +1966,10 @@ body.dark-mode .sudoku-cell.cell-error {
   color: var(--text-primary);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   line-height: 1.2;
+  width: 100%;
 }
 
 .score-value {
@@ -1986,27 +1997,26 @@ body.dark-mode .sudoku-cell.cell-error {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  gap: 16px;
+  width: 234px;
+  margin: 0 auto;
 }
 
 .tool-btn {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
-  color: var(--primary-purple);
+  padding: 0;
 }
 
 .tool-btn:hover {
-  background-color: var(--toggle-hover-bg);
   transform: scale(1.05);
 }
 
@@ -2015,14 +2025,15 @@ body.dark-mode .sudoku-cell.cell-error {
 }
 
 .tool-btn.active {
-  background-color: var(--primary-purple);
-  color: #FFFFFF !important;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px var(--primary-purple);
 }
 
-.tool-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
+.tool-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .tool-btn-badge {
@@ -2051,23 +2062,29 @@ body.dark-mode .sudoku-cell.cell-error {
 /* Keypad Layout */
 .keypad-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 70px);
   gap: 12px;
   width: 100%;
+  justify-content: center;
 }
 
 .keypad-btn {
-  height: 56px;
-  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
   background-color: var(--btn-keypad-bg);
   border: none;
   font-family: 'Urbanist', sans-serif;
-  font-size: 28px;
   font-weight: 700;
+  font-style: normal;
+  font-size: 42.65px;
+  line-height: 120%;
+  letter-spacing: 0%;
   color: var(--btn-keypad-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  vertical-align: middle;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -2078,6 +2095,41 @@ body.dark-mode .sudoku-cell.cell-error {
 
 .keypad-btn:active {
   transform: scale(0.95);
+}
+
+#btn-new-game {
+  width: 230px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 100px;
+  background-color: #6949FF;
+  color: #FAFAFA;
+  border: none;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.2px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 14px rgba(105, 73, 255, 0.3);
+  align-self: center;
+}
+
+#btn-new-game:hover {
+  background-color: var(--primary-purple-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(105, 73, 255, 0.45);
+}
+
+#btn-new-game:active {
+  transform: translateY(0);
 }
 
 /* Game Over & Win Screen Overlay */
@@ -2200,47 +2252,18 @@ body.dark-mode .sudoku-cell.cell-error {
     margin-bottom: 4px;
   }
 
-  /* Hide separate score display on mobile, show it in stats row */
+  /* Centered score display on mobile */
   .game-controls > .score-display {
-    display: none;
-  }
-
-  .stats-row .score-display {
     display: flex;
-    font-size: 15px;
-  }
-
-  /* Single row for keypad on mobile */
-  .keypad-grid {
-    grid-template-columns: repeat(9, 1fr);
-    gap: 6px;
-  }
-
-  .keypad-btn {
-    height: 40px;
-    font-size: 18px;
-    border-radius: 6px;
-  }
-
-  /* Tools layout on mobile */
-  .tools-row {
+    font-size: 20px;
     justify-content: center;
-    gap: 20px;
   }
 
-  .tool-btn {
-    width: 48px;
-    height: 48px;
-  }
 
-  .tool-btn svg {
-    width: 20px;
-    height: 20px;
-  }
 
   /* New game button */
-  .game-controls .lobby-play-btn {
-    width: 100%;
+  .game-controls #btn-new-game {
+    width: 230px;
     margin-top: 8px;
   }
 }

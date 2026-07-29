@@ -201,6 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
         cellEl.dataset.row = r;
         cellEl.dataset.col = c;
 
+        // Apply alternating 3x3 block backgrounds
+        const blockRow = Math.floor(r / 3);
+        const blockCol = Math.floor(c / 3);
+        if ((blockRow + blockCol) % 2 === 0) {
+          cellEl.classList.add('cell-block-accent');
+        }
+
         const val = currentBoard[r][c];
 
         if (initialBoard[r][c] !== 0) {
@@ -278,8 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateStatsUI() {
-    scoreValEl.textContent = score;
-    scoreValMobileEl.textContent = score;
+    if (scoreValEl) scoreValEl.textContent = score;
+    if (scoreValMobileEl) scoreValMobileEl.textContent = score;
     mistakesValEl.textContent = `${mistakes}/${maxMistakes}`;
     hintBadgeEl.textContent = hintsRemaining;
   }
