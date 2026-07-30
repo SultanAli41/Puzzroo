@@ -1803,6 +1803,12 @@ body.dark-mode .lobby-page-body footer {
     padding-right: 20px;
   }
 
+  .difficulty-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
   .lobby-title {
     font-size: 32px;
   }
