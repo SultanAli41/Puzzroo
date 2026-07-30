@@ -113,15 +113,11 @@
 
           <!-- Right side (Desktop) / Bottom (Mobile): Controls -->
           <div class="game-controls">
-            <!-- Score (Centered on top for both desktop & mobile) -->
-            <div class="score-display">
-              Score: <span id="score-val" class="score-value">0</span>
-            </div>
-
-            <!-- Row of stats (Mistakes and Time only on the second line) -->
-            <div class="stats-row">
-              <div class="stat-item">Mistakes: <span id="mistakes-val">0/3</span></div>
-              <div class="stat-item">Time: <span id="timer-val">00:00</span></div>
+            <!-- Stats Container (Score, Mistakes, Time) -->
+            <div class="stats-container">
+              <div class="stat-item" id="stat-mistakes">Mistakes: <span id="mistakes-val">0/3</span></div>
+              <div class="stat-item" id="stat-score">Score: <span id="score-val" class="score-value">0</span></div>
+              <div class="stat-item" id="stat-time">Time: <span id="timer-val">00:00</span></div>
             </div>
 
             <div class="tools-row">
