@@ -64,7 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
-  function solveSudoku(board) {
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function solveSudokuRandom(board) {
     let row = -1;
     let col = -1;
     let isEmpty = false;
@@ -83,14 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isEmpty) return true; // Solved!
 
-    // Shuffle numbers 1-9 to introduce random variation
-    const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
+    const nums = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
     for (let idx = 0; idx < 9; idx++) {
       const num = nums[idx];
       if (isSafe(board, row, col, num)) {
         board[row][col] = num;
-        if (solveSudoku(board)) {
+        if (solveSudokuRandom(board)) {
           return true;
         }
         board[row][col] = 0; // Backtrack
@@ -99,22 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return false;
   }
 
-  function fillDiagonalBoxes(board) {
-    for (let i = 0; i < 9; i += 3) {
-      const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
-      let idx = 0;
-      for (let r = 0; r < 3; r++) {
-        for (let c = 0; c < 3; c++) {
-          board[i + r][i + c] = nums[idx++];
-        }
-      }
-    }
-  }
-
   function generateFullSudoku() {
     const board = Array.from({ length: 9 }, () => Array(9).fill(0));
-    fillDiagonalBoxes(board);
-    solveSudoku(board);
+    solveSudokuRandom(board);
     return board;
   }
 
@@ -468,6 +462,13 @@ document.addEventListener('DOMContentLoaded', () => {
     cellEl.innerHTML = '';
     cellEl.className = `sudoku-cell row-${row} col-${col}`;
 
+    // Apply alternating 3x3 block backgrounds
+    const blockRow = Math.floor(row / 3);
+    const blockCol = Math.floor(col / 3);
+    if ((blockRow + blockCol) % 2 === 0) {
+      cellEl.classList.add('cell-block-accent');
+    }
+
     const val = currentBoard[row][col];
 
     if (initialBoard[row][col] !== 0) {
@@ -545,6 +546,25 @@ document.addEventListener('DOMContentLoaded', () => {
      Keyboard Listeners & UI Binding Events
      ========================================================================== */
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault(); // Prevent page scroll
+      let r = selectedCell ? selectedCell.row : 0;
+      let c = selectedCell ? selectedCell.col : 0;
+
+      if (!selectedCell) {
+        handleCellSelection(0, 0);
+        return;
+      }
+
+      if (e.key === 'ArrowUp') r = (r - 1 + 9) % 9;
+      if (e.key === 'ArrowDown') r = (r + 1) % 9;
+      if (e.key === 'ArrowLeft') c = (c - 1 + 9) % 9;
+      if (e.key === 'ArrowRight') c = (c + 1) % 9;
+
+      handleCellSelection(r, c);
+      return;
+    }
+
     // If selected cell is active and user clicks 1-9
     if (selectedCell) {
       if (e.key >= '1' && e.key <= '9') {

@@ -34,9 +34,9 @@
 /* System Preference Dark Theme (Default when no explicit user choice) */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg-body: #0A0910;
-    --bg-wrapper: #13111E;
-    --bg-header: #13111E;
+    --bg-body: #1F222A;
+    --bg-wrapper: #1F222A;
+    --bg-header: #1F222A;
     --text-primary: #F8F7FF;
     --text-secondary: #AAA6C8;
     --card-bg: #1F222A;
@@ -87,9 +87,9 @@
 /* Explicit Theme Overrides via data-theme attribute or body class */
 [data-theme="dark"],
 body.dark-mode {
-  --bg-body: #0A0910;
-  --bg-wrapper: #13111E;
-  --bg-header: #13111E;
+  --bg-body: #1F222A;
+  --bg-wrapper: #1F222A;
+  --bg-header: #1F222A;
   --text-primary: #F8F7FF;
   --text-secondary: #AAA6C8;
   --card-bg: #1F222A;
@@ -179,6 +179,9 @@ body {
 
 /* Header Section */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   background-color: var(--bg-header);
   display: flex;
@@ -186,7 +189,8 @@ header {
   align-items: center;
   justify-content: flex-start;
   padding: 0 40px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* Nav Bar (1312px max width) */
@@ -210,14 +214,14 @@ header {
 }
 
 .logo-img {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
 
 .brand-text {
   font-family: 'Urbanist', sans-serif;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1;
@@ -269,8 +273,8 @@ header {
 }
 
 .theme-icon {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   display: block;
 }
@@ -1257,6 +1261,21 @@ footer {
     height: 72px;
   }
 
+  .logo-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-text,
+  .lobby-page-body .brand-text {
+    font-size: 20px;
+  }
+
+  .theme-icon {
+    width: 28px;
+    height: 28px;
+  }
+
   .nav-desktop-buttons,
   .theme-toggle-text {
     display: none;
@@ -1268,6 +1287,22 @@ footer {
 
   .mobile-menu-btn {
     display: flex;
+  }
+
+  .mobile-menu-btn svg.hamburger-icon {
+    width: 20px;
+    height: 17.5px;
+  }
+
+  .lobby-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+  }
+
+  .lobby-icon-img {
+    width: 40px;
+    height: 40px;
   }
 
   main {
@@ -1437,6 +1472,11 @@ footer {
 /* ==========================================================================
    Lobby Page Styles
    ========================================================================== */
+body.lobby-page-body,
+.lobby-page-body .wrapper-div {
+  background-color: var(--bg-body);
+}
+
 .lobby-page-body .brand-text {
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
@@ -1755,7 +1795,7 @@ body.dark-mode .lobby-page-body footer {
 /* Responsive adjustment for lobby page */
 @media (max-width: 768px) {
   .lobby-page-body .brand-text {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .lobby-container {
@@ -1821,7 +1861,7 @@ body.dark-mode {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 64px;
   width: 100%;
   margin-top: 16px;
@@ -1844,7 +1884,7 @@ body.dark-mode {
   width: 448px;
   height: 448px;
   background-color: var(--bg-wrapper);
-  border: 3px solid var(--text-primary);
+  border: 2px solid var(--text-primary);
   box-sizing: border-box;
   user-select: none;
   border-radius: 4px;
@@ -1877,7 +1917,7 @@ body.dark-mode {
 
 /* Thicker borders for 3x3 grids */
 .sudoku-cell:nth-child(3n) {
-  border-right: 3px solid var(--text-primary);
+  border-right: 2px solid var(--text-primary);
 }
 .sudoku-cell:nth-child(9n) {
   border-right: none; /* remove right border for final column */
@@ -1885,7 +1925,7 @@ body.dark-mode {
 /* Rows 3 and 6 should have thick bottom border (0-indexed row 2 and 5) */
 .sudoku-cell.row-2,
 .sudoku-cell.row-5 {
-  border-bottom: 3px solid var(--text-primary);
+  border-bottom: 2px solid var(--text-primary);
 }
 /* Final row has no bottom border */
 .sudoku-cell.row-8 {
@@ -1978,14 +2018,13 @@ body.dark-mode .sudoku-cell.cell-error {
 
 .stats-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   width: 100%;
   font-size: 16px;
   font-weight: 700;
   color: var(--text-secondary);
-  border-bottom: 1px solid var(--faq-border);
-  padding-bottom: 12px;
 }
 
 .stat-item span {
@@ -2118,14 +2157,14 @@ body.dark-mode .sudoku-cell.cell-error {
   vertical-align: middle;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  box-shadow: 0 4px 14px rgba(105, 73, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(105, 73, 255, 0.4);
   align-self: center;
 }
 
 #btn-new-game:hover {
   background-color: var(--primary-purple-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(105, 73, 255, 0.45);
+  box-shadow: 0 12px 28px rgba(105, 73, 255, 0.55);
 }
 
 #btn-new-game:active {
@@ -2245,7 +2284,9 @@ body.dark-mode .sudoku-cell.cell-error {
 
   /* Row for stats on mobile */
   .stats-row {
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     font-size: 15px;
     border-bottom: none;
     padding-bottom: 0;
