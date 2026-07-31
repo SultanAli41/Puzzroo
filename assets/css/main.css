@@ -139,6 +139,28 @@ body.light-mode {
   --wrapper-shadow: rgba(0, 0, 0, 0.08);
 }
 
+/* Lobby Page Background overrides */
+.lobby-page-body {
+  --bg-body: #FFFFFF;
+  --bg-wrapper: #FFFFFF;
+  --bg-header: #FFFFFF;
+}
+
+[data-theme="dark"] .lobby-page-body,
+body.dark-mode.lobby-page-body {
+  --bg-body: #181A20;
+  --bg-wrapper: #181A20;
+  --bg-header: #181A20;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lobby-page-body {
+    --bg-body: #181A20;
+    --bg-wrapper: #181A20;
+    --bg-header: #181A20;
+  }
+}
+
 /* CSS Reset */
 * {
   margin: 0;
@@ -1727,13 +1749,14 @@ body.dark-mode .details-text {
   height: 125px;
   background-color: #F5F5F5;
   border: none;
-  border-radius: 12px;
-  padding: 16px 32px;
+  border-radius: 4px;
+  padding: 20px 30px 20px 10px;
   margin-top: 8px;
   transition: background-color 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 [data-theme="dark"] .rules-box,
@@ -1746,7 +1769,7 @@ body.dark-mode .rules-box {
   padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .rules-list li {
@@ -1925,14 +1948,18 @@ body.dark-mode {
 .sudoku-cell:nth-child(3n) {
   border-right: 2px solid var(--text-primary);
 }
+
 .sudoku-cell:nth-child(9n) {
-  border-right: none; /* remove right border for final column */
+  border-right: none;
+  /* remove right border for final column */
 }
+
 /* Rows 3 and 6 should have thick bottom border (0-indexed row 2 and 5) */
 .sudoku-cell.row-2,
 .sudoku-cell.row-5 {
   border-bottom: 2px solid var(--text-primary);
 }
+
 /* Final row has no bottom border */
 .sudoku-cell.row-8 {
   border-bottom: none;
@@ -1951,6 +1978,7 @@ body.dark-mode {
   color: #E53935;
   background-color: rgba(229, 57, 53, 0.15);
 }
+
 [data-theme="dark"] .sudoku-cell.cell-error,
 body.dark-mode .sudoku-cell.cell-error {
   color: #FF5252;
@@ -2008,7 +2036,7 @@ body.dark-mode .sudoku-cell.cell-error {
 
 .stats-container {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "score score"
     "mistakes mistakes"
     "time time";
