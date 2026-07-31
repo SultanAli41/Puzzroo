@@ -2358,6 +2358,230 @@ body.dark-mode .sudoku-cell.cell-error {
   .game-controls #btn-new-game {
     width: 100%;
     max-width: 320px;
-    margin-top: 8px;
   }
 }
+
+/* ==========================================================================
+   Nonogram Game Styles
+   ========================================================================== */
+:root {
+  --nonogram-cell-w: 64px;
+  --nonogram-cell-h: 66px;
+  --nonogram-hint-w: 110px;
+  --nonogram-hint-h: 110px;
+  
+  --nonogram-hint-bg: #F0EDFF;
+  --nonogram-hint-color: #212121;
+  --nonogram-cell-filled-bg: #A592FF;
+  --nonogram-cell-border: #CECECE;
+  --nonogram-cell-empty-bg: #FFFFFF;
+}
+
+[data-theme="dark"] :root,
+body.dark-mode {
+  --nonogram-hint-bg: #211D39;
+  --nonogram-hint-color: #F8F7FF;
+  --nonogram-cell-filled-bg: #A592FF;
+  --nonogram-cell-border: #2D274A;
+  --nonogram-cell-empty-bg: #1F222A;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nonogram-cell-w: 48px;
+    --nonogram-cell-h: 50px;
+    --nonogram-hint-w: 80px;
+    --nonogram-hint-h: 80px;
+  }
+}
+
+.nonogram-board-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 16px 0;
+  transition: transform 0.3s ease;
+}
+
+.nonogram-board-wrapper.zoomed {
+  transform: scale(1.15);
+}
+
+.nonogram-board {
+  display: grid;
+  grid-template-columns: var(--nonogram-hint-w) repeat(5, var(--nonogram-cell-w));
+  grid-template-rows: var(--nonogram-hint-h) repeat(5, var(--nonogram-cell-h));
+  width: calc(var(--nonogram-hint-w) + 5 * var(--nonogram-cell-w));
+  height: calc(var(--nonogram-hint-h) + 5 * var(--nonogram-cell-h));
+  background-color: var(--bg-wrapper);
+  border: 2px solid var(--text-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.nonogram-hint-corner {
+  background-color: var(--nonogram-hint-bg);
+  border-bottom: 2px solid var(--text-primary);
+  border-right: 2px solid var(--text-primary);
+  box-sizing: border-box;
+}
+
+.nonogram-col-hint {
+  background-color: var(--nonogram-hint-bg);
+  color: var(--nonogram-hint-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  padding-bottom: 12px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  border-bottom: 2px solid var(--text-primary);
+  border-right: 1px solid var(--nonogram-cell-border);
+  box-sizing: border-box;
+}
+
+.nonogram-col-hint:last-child {
+  border-right: none;
+}
+
+.nonogram-row-hint {
+  background-color: var(--nonogram-hint-bg);
+  color: var(--nonogram-hint-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding-right: 16px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  border-right: 2px solid var(--text-primary);
+  border-bottom: 1px solid var(--nonogram-cell-border);
+  box-sizing: border-box;
+}
+
+.nonogram-row-hint:last-child {
+  border-bottom: none;
+}
+
+.nonogram-cell {
+  background-color: var(--nonogram-cell-empty-bg);
+  border-right: 1px solid var(--nonogram-cell-border);
+  border-bottom: 1px solid var(--nonogram-cell-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.nonogram-cell[data-col="4"] {
+  border-right: none;
+}
+
+.nonogram-cell[data-row="4"] {
+  border-bottom: none;
+}
+
+.nonogram-cell:hover {
+  background-color: var(--cell-hover-bg);
+}
+
+.nonogram-cell.cell-filled {
+  background-color: var(--nonogram-cell-filled-bg) !important;
+}
+
+.nonogram-cell.cell-x::before {
+  content: "✕";
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--text-secondary);
+}
+
+.nonogram-cell.cell-error {
+  background-color: rgba(229, 57, 53, 0.15) !important;
+  color: #E53935;
+}
+
+[data-theme="dark"] .nonogram-cell.cell-error,
+body.dark-mode .nonogram-cell.cell-error {
+  color: #FF5252;
+  background-color: rgba(255, 82, 82, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+  .nonogram-col-hint,
+  .nonogram-row-hint {
+    font-size: 18px;
+  }
+  .nonogram-col-hint {
+    padding-bottom: 6px;
+    gap: 2px;
+  }
+  .nonogram-row-hint {
+    padding-right: 8px;
+    gap: 4px;
+  }
+  .nonogram-cell {
+    font-size: 20px;
+  }
+  .nonogram-cell.cell-x::before {
+    font-size: 18px;
+  }
+}
+
+/* Tools Selector styling */
+.nonogram-tools-selector {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 345.35px;
+  margin-top: 8px;
+}
+
+.nonogram-tool-btn {
+  flex: 1;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--btn-keypad-bg);
+  color: var(--btn-keypad-color);
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--toggle-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nonogram-tool-btn:hover {
+  background-color: var(--btn-keypad-hover);
+}
+
+.nonogram-tool-btn.active {
+  background-color: var(--primary-purple);
+  color: #FFFFFF;
+  border-color: var(--primary-purple);
+  box-shadow: 0 4px 12px rgba(105, 73, 255, 0.25);
+}
+
+.nonogram-tool-btn-icon {
+  font-size: 20px;
+  font-weight: 800;
+}

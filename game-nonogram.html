@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzroo - Play Nonogram</title>
+  <!-- Google Fonts: Urbanist -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css?v=13">
+</head>
+
+<body class="lobby-page-body">
+  <div class="wrapper-div" id="wrapper">
+    <!-- Header Section (Navbar only, no Hero) -->
+    <header>
+      <!-- Nav Bar (1312px x 92px) -->
+      <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/images/Logo.svg" alt="Puzzroo Logo" class="logo-img">
+          <span class="brand-text">Puzzroo</span>
+        </a>
+        <div class="nav-right-container">
+          <div class="nav-desktop-buttons">
+            <a href="#signup" class="btn-signup">Sign up</a>
+            <a href="#login" class="btn-login">Login</a>
+          </div>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle dark/light mode">
+            <span class="theme-toggle-text">Light Mode</span>
+            <img src="assets/images/Lightmode.svg" alt="Light Mode" class="theme-icon light-icon">
+            <img src="assets/images/Darkmode.svg" alt="Dark Mode" class="theme-icon dark-icon">
+          </button>
+          <!-- Mobile Menu Toggle Button (24px x 21px Icon) -->
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu"
+            aria-expanded="false">
+            <svg class="hamburger-icon" width="24" height="21" viewBox="0 0 24 21" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.45833 2.91667H21.875C22.75 2.91667 23.3333 2.33333 23.3333 1.45833C23.3333 0.583333 22.75 0 21.875 0H1.45833C0.583333 0 0 0.583333 0 1.45833C0 2.33333 0.583333 2.91667 1.45833 2.91667ZM1.45833 11.6667H21.875C22.75 11.6667 23.3333 11.0833 23.3333 10.2083C23.3333 9.33333 22.75 8.75 21.875 8.75H1.45833C0.583333 8.75 0 9.33333 0 10.2083C0 11.0833 0.583333 11.6667 1.45833 11.6667ZM1.45833 20.4167H21.875C22.75 20.4167 23.3333 19.8333 23.3333 18.9583C23.3333 18.0833 22.75 17.5 21.875 17.5H1.45833C0.583333 17.5 0 18.0833 0 18.9583C0 19.8333 0.583333 20.4167 1.45833 20.4167Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Overlay & Drawer -->
+      <div id="mobile-nav-backdrop" class="mobile-nav-backdrop"></div>
+      <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+        <div class="mobile-drawer-header">
+          <div class="nav-brand">
+            <img src="assets/images/Logo.svg" alt="Puzzroo Logo" class="logo-img">
+            <span class="brand-text">Puzzroo</span>
+          </div>
+          <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mobile-drawer-body">
+          <ul class="mobile-menu-links">
+            <li><a href="index.html" class="mobile-link">Home</a></li>
+            <li><a href="index.html#games" class="mobile-link">Free Games</a></li>
+            <li><a href="index.html#premium" class="mobile-link">Premium</a></li>
+            <li><a href="index.html#faqs" class="mobile-link">FAQs</a></li>
+          </ul>
+
+          <div class="mobile-drawer-divider"></div>
+
+          <!-- Theme Mode Switcher in Mobile Drawer -->
+          <div class="mobile-theme-row">
+            <span class="mobile-theme-label">Appearance</span>
+            <button id="mobile-theme-toggle" class="mobile-theme-toggle-btn">
+              <span class="theme-text-light">Light</span>
+              <span class="theme-text-dark">Dark</span>
+            </button>
+          </div>
+
+          <!-- Action Buttons (Sign Up & Login) -->
+          <div class="mobile-drawer-actions">
+            <a href="#login" class="mobile-btn-login">Login</a>
+            <a href="#signup" class="mobile-btn-signup">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <div class="game-container">
+        <!-- Nonogram Header/Card Info -->
+        <div class="lobby-card" style="gap: 16px; margin-bottom: 8px;">
+          <div class="lobby-icon-wrapper">
+            <img src="assets/images/Card5.svg" alt="Nonogram Icon" class="lobby-icon-img">
+          </div>
+          <h1 class="lobby-title">NONOGRAM</h1>
+        </div>
+
+        <!-- Nonogram Play Area Layout -->
+        <div class="game-layout">
+          <!-- Left side: Game Box (Board Wrapper) -->
+          <div class="nonogram-board-wrapper" id="board-wrapper">
+            <div id="nonogram-board" class="nonogram-board">
+              <!-- Grid and hint cells will be generated dynamically -->
+            </div>
+          </div>
+
+          <!-- Right side (Desktop) / Bottom (Mobile): Controls -->
+          <div class="game-controls">
+            <!-- Stats Container (Mistakes, Time) -->
+            <div class="stats-container">
+              <div class="stat-item" id="stat-mistakes">Mistakes: <span id="mistakes-val">0/3</span></div>
+              <div class="stat-item" id="stat-time">Time: <span id="timer-val">00:00</span></div>
+            </div>
+
+            <div class="tools-row">
+              <!-- Undo Button -->
+              <button id="tool-undo" class="tool-btn" aria-label="Undo last move" title="Undo">
+                <img src="assets/images/Restarticon.svg" alt="Undo" class="tool-icon-img">
+              </button>
+              <!-- Restart Button -->
+              <button id="tool-restart" class="tool-btn" aria-label="Restart game" title="Restart">
+                <img src="assets/images/Restarticon.svg" alt="Restart" class="tool-icon-img"
+                  style="transform: scaleX(-1);">
+              </button>
+              <!-- Zoom Button -->
+              <button id="tool-zoom" class="tool-btn" aria-label="Zoom board size" title="Zoom">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" style="display: block; color: var(--primary-purple);">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </button>
+              <!-- Hint Button -->
+              <button id="tool-hint" class="tool-btn" aria-label="Reveal hint for a cell" title="Hint">
+                <img src="assets/images/Hint%20icon.svg" alt="Hint" class="tool-icon-img">
+                <span id="hint-badge" class="tool-btn-badge">3</span>
+              </button>
+            </div>
+
+            <!-- New Game Button -->
+            <button id="btn-new-game" class="lobby-play-btn">
+              New Game
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <p class="footer-copyright">&copy; Puzzroo 2025</p>
+        <div class="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms & Conditions.</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Game Over Overlay -->
+  <div id="game-over-overlay" class="game-overlay">
+    <div class="overlay-content">
+      <h2 class="overlay-title">Game Over</h2>
+      <p class="overlay-text">You have made 3 mistakes and lost this game. Don't give up! Try again and train your
+        brain.</p>
+      <button id="btn-game-over-restart" class="overlay-btn">Try Again</button>
+    </div>
+  </div>
+
+  <!-- Victory Overlay -->
+  <div id="victory-overlay" class="game-overlay">
+    <div class="overlay-content">
+      <h2 class="overlay-title">Congratulations!</h2>
+      <p class="overlay-text">You have successfully completed the Nonogram puzzle. Your score is <span
+          id="final-score">0</span>!</p>
+      <button id="btn-victory-new-game" class="overlay-btn">Play Another Game</button>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/nonogram.js?v=1"></script>
+</body>
+
+</html>
