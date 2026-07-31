@@ -5,7 +5,7 @@
    CSS Custom Properties / Theme System
    ========================================================================== */
 :root {
-  --bg-body: #F5F5F5;
+  --bg-body: #FFFFFF;
   --bg-wrapper: #FFFFFF;
   --bg-header: #FFFFFF;
   --text-primary: #212121;
@@ -113,7 +113,7 @@ body.dark-mode {
 
 [data-theme="light"],
 body.light-mode {
-  --bg-body: #F5F5F5;
+  --bg-body: #FFFFFF;
   --bg-wrapper: #FFFFFF;
   --bg-header: #FFFFFF;
   --text-primary: #212121;
@@ -143,21 +143,18 @@ body.light-mode {
 .lobby-page-body {
   --bg-body: #FFFFFF;
   --bg-wrapper: #FFFFFF;
-  --bg-header: #FFFFFF;
 }
 
 [data-theme="dark"] .lobby-page-body,
 body.dark-mode.lobby-page-body {
   --bg-body: #181A20;
   --bg-wrapper: #181A20;
-  --bg-header: #181A20;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .lobby-page-body {
     --bg-body: #181A20;
     --bg-wrapper: #181A20;
-    --bg-header: #181A20;
   }
 }
 
@@ -243,11 +240,11 @@ header {
 
 .brand-text {
   font-family: 'Urbanist', sans-serif;
-  font-size: 22px;
+  font-size: 40px;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: 0;
   transition: color 0.3s ease;
 }
 
@@ -1499,20 +1496,6 @@ body.lobby-page-body,
   background-color: var(--bg-body);
 }
 
-.lobby-page-body .brand-text {
-  font-family: 'Urbanist', sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 1.2;
-  letter-spacing: 0;
-  color: #212121;
-  transition: color 0.3s ease;
-}
-
-[data-theme="dark"] .lobby-page-body .brand-text,
-body.dark-mode .lobby-page-body .brand-text {
-  color: #F8F7FF;
-}
 
 .lobby-container {
   width: 100%;
@@ -1804,15 +1787,7 @@ body.dark-mode .rules-list li {
 }
 
 .lobby-page-body footer {
-  background-color: #F0EDFF;
   margin-top: 24px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-[data-theme="dark"] .lobby-page-body footer,
-body.dark-mode .lobby-page-body footer {
-  background-color: #1F222A;
-  border-color: rgba(105, 73, 255, 0.15);
 }
 
 /* Responsive adjustment for lobby page */
