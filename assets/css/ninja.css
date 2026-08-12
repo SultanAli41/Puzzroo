@@ -1,0 +1,206 @@
+/* Number Ninja CSS overrides and styles */
+
+/* Board Wrapper layout matches Sudoku Board Wrapper */
+.ninja-board-wrapper {
+  width: 448px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.ninja-board-wrapper.zoomed {
+  transform: scale(1.15);
+}
+
+@media (max-width: 992px) {
+  .ninja-board-wrapper {
+    width: 100%;
+    max-width: 448px;
+  }
+  .ninja-board-wrapper.zoomed {
+    transform: scale(1.05);
+  }
+}
+
+/* Header Panel displays target equation & timer progress bar */
+.ninja-header-panel {
+  width: 100%;
+  background-color: var(--nonogram-hint-bg);
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.ninja-question-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--nonogram-hint-color);
+}
+
+.ninja-label {
+  opacity: 0.7;
+}
+
+.ninja-equation {
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--primary-purple);
+  letter-spacing: 1px;
+}
+
+/* Timer countdown bar */
+.ninja-timer-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(105, 73, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ninja-timer-bar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-purple);
+  border-radius: 4px;
+  transition: width 0.1s linear, background-color 0.3s ease;
+}
+
+/* The 5x5 board */
+.ninja-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: 448px;
+  height: 448px;
+  background-color: var(--bg-wrapper);
+  border: 2px solid var(--text-primary);
+  box-sizing: border-box;
+  user-select: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .ninja-board {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* Ninja grid cell */
+.ninja-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background-color: var(--nonogram-cell-empty-bg);
+  border-right: 2px solid var(--nonogram-cell-border);
+  border-bottom: 2px solid var(--nonogram-cell-border);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.3s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+/* Hover effects */
+.ninja-cell:hover:not(.cell-correct):not(.cell-wrong):not(.cell-bomb) {
+  background-color: var(--cell-hover-bg);
+}
+
+/* Borders overrides: remove right border for final col, bottom border for final row */
+.ninja-cell:nth-child(5n) {
+  border-right: none;
+}
+.ninja-cell:nth-child(n+21) {
+  border-bottom: none;
+}
+
+/* State Classes */
+.ninja-cell.cell-correct {
+  background-color: rgba(76, 175, 80, 0.2) !important; /* light green */
+  color: #4CAF50 !important;
+  font-weight: 800;
+  animation: slash-effect 0.4s ease-out;
+}
+
+.ninja-cell.cell-wrong {
+  background-color: rgba(244, 67, 54, 0.2) !important; /* light red */
+  color: #F44336 !important;
+  font-weight: 800;
+  animation: shake-effect 0.4s ease;
+}
+
+.ninja-cell.cell-bomb {
+  background-color: rgba(255, 152, 0, 0.15) !important;
+  color: #FF9800 !important;
+  font-size: 32px;
+}
+
+.ninja-cell.cell-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Combo badge styling */
+.combo-badge {
+  font-size: 13px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background-color: var(--primary-purple);
+  color: #FFF;
+  font-weight: 800;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.combo-badge.pop {
+  transform: scale(1.3);
+}
+
+/* Shuriken/Bomb Icon in cells */
+.ninja-cell-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+/* Animations */
+@keyframes slash-effect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9) rotate(-15deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes shake-effect {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
