@@ -2366,7 +2366,7 @@ body.dark-mode .sudoku-cell.cell-error {
    ========================================================================== */
 :root {
   --nonogram-cell-w: 64px;
-  --nonogram-cell-h: 66px;
+  --nonogram-cell-h: 64px; /* Perfectly square cells */
   --nonogram-hint-w: 110px;
   --nonogram-hint-h: 110px;
   
@@ -2389,7 +2389,7 @@ body.dark-mode {
 @media (max-width: 768px) {
   :root {
     --nonogram-cell-w: 48px;
-    --nonogram-cell-h: 50px;
+    --nonogram-cell-h: 48px; /* Perfectly square on mobile */
     --nonogram-hint-w: 80px;
     --nonogram-hint-h: 80px;
   }
@@ -2399,7 +2399,8 @@ body.dark-mode {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: auto; /* Prevent stretching and horizontal gap */
+  flex-shrink: 0;
   margin: 16px 0;
   transition: transform 0.3s ease;
 }
@@ -2415,20 +2416,19 @@ body.dark-mode {
   width: calc(var(--nonogram-hint-w) + 5 * var(--nonogram-cell-w));
   height: calc(var(--nonogram-hint-h) + 5 * var(--nonogram-cell-h));
   background-color: var(--bg-wrapper);
-  border: 2px solid var(--text-primary);
-  border-radius: 12px;
-  overflow: hidden;
+  border: none; /* Removed default outer border to wrap clues/cells customly */
+  overflow: visible; /* Show rounded corners on elements */
   box-sizing: border-box;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .nonogram-hint-corner {
-  background-color: var(--nonogram-hint-bg);
-  border-bottom: 2px solid var(--text-primary);
-  border-right: 2px solid var(--text-primary);
+  background-color: transparent; /* Empty top-left corner matching Figma */
+  border: none;
   box-sizing: border-box;
 }
 
+/* Col hints: top clues */
 .nonogram-col-hint {
   background-color: var(--nonogram-hint-bg);
   color: var(--nonogram-hint-color);
@@ -2441,15 +2441,23 @@ body.dark-mode {
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
   font-size: 24px;
-  border-bottom: 2px solid var(--text-primary);
-  border-right: 1px solid var(--nonogram-cell-border);
   box-sizing: border-box;
+  /* Clue borders match their background (seamless continuous look) */
+  border-top: 2px solid var(--nonogram-hint-bg);
+  border-bottom: 2px solid var(--nonogram-hint-bg);
+  border-right: 2px solid var(--nonogram-hint-bg);
 }
 
-.nonogram-col-hint:last-child {
-  border-right: none;
+/* Column hint border overrides */
+.nonogram-col-hint:nth-child(2) {
+  border-left: 2px solid var(--nonogram-hint-bg);
 }
 
+.nonogram-col-hint:nth-child(6) {
+  border-right: 2px solid var(--nonogram-hint-bg);
+}
+
+/* Row hints: left clues */
 .nonogram-row-hint {
   background-color: var(--nonogram-hint-bg);
   color: var(--nonogram-hint-color);
@@ -2462,19 +2470,25 @@ body.dark-mode {
   font-family: 'Urbanist', sans-serif;
   font-weight: 700;
   font-size: 24px;
-  border-right: 2px solid var(--text-primary);
-  border-bottom: 1px solid var(--nonogram-cell-border);
   box-sizing: border-box;
+  /* Clue borders match their background (seamless continuous look) */
+  border-left: 2px solid var(--nonogram-hint-bg);
+  border-right: 2px solid var(--nonogram-hint-bg);
+  border-bottom: 2px solid var(--nonogram-hint-bg);
 }
 
-.nonogram-row-hint:last-child {
-  border-bottom: none;
+/* Row hint border overrides */
+.nonogram-row-hint:nth-child(7) {
+  border-top: 2px solid var(--nonogram-hint-bg);
 }
 
+.nonogram-row-hint:nth-child(31) {
+  border-bottom: 2px solid var(--nonogram-hint-bg);
+}
+
+/* Playable cells */
 .nonogram-cell {
   background-color: var(--nonogram-cell-empty-bg);
-  border-right: 1px solid var(--nonogram-cell-border);
-  border-bottom: 1px solid var(--nonogram-cell-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2486,14 +2500,17 @@ body.dark-mode {
   box-sizing: border-box;
   transition: background-color 0.15s ease, color 0.15s ease;
   user-select: none;
+  /* 2px solid cell border for all playable cells (Figma style) */
+  border-right: 2px solid var(--nonogram-cell-border);
+  border-bottom: 2px solid var(--nonogram-cell-border);
 }
 
-.nonogram-cell[data-col="4"] {
-  border-right: none;
+.nonogram-cell[data-row="0"] {
+  border-top: 2px solid var(--nonogram-cell-border);
 }
 
-.nonogram-cell[data-row="4"] {
-  border-bottom: none;
+.nonogram-cell[data-col="0"] {
+  border-left: 2px solid var(--nonogram-cell-border);
 }
 
 .nonogram-cell:hover {
@@ -2542,6 +2559,171 @@ body.dark-mode .nonogram-cell.cell-error {
     font-size: 18px;
   }
 }
+
+/* Layout & Controls Positioning (Figma spacing match) */
+.nonogram-layout {
+  gap: 48px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nonogram-controls {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.nonogram-controls .stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.nonogram-controls .stat-item {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nonogram-controls .stat-item span {
+  color: var(--primary-purple);
+  font-weight: 800;
+}
+
+.nonogram-controls .tools-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  gap: 16px;
+}
+
+.nonogram-controls .tool-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.nonogram-controls .tool-btn:hover {
+  background-color: var(--toggle-hover-bg);
+  transform: scale(1.05);
+}
+
+.nonogram-controls .tool-btn:active {
+  transform: scale(0.95);
+}
+
+.nonogram-controls .tool-btn.active {
+  background-color: var(--primary-purple);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(105, 73, 255, 0.25);
+}
+
+.nonogram-controls .tool-btn.active svg {
+  color: #FFFFFF !important;
+}
+
+.nonogram-controls .tool-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.nonogram-controls .tool-btn svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.nonogram-controls .tool-btn-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--primary-purple);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-wrapper);
+}
+
+.nonogram-controls #btn-new-game {
+  width: 100%;
+  max-width: 100%;
+  height: 52px;
+  border-radius: 26px;
+  background-color: var(--primary-purple);
+  color: #FFFFFF;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.nonogram-controls #btn-new-game:hover {
+  background-color: var(--primary-purple-hover);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .nonogram-layout {
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .nonogram-controls {
+    width: 100%;
+    max-width: 320px;
+    gap: 20px;
+  }
+  
+  .nonogram-controls .tools-row {
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .nonogram-controls .tool-btn {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .nonogram-controls #btn-new-game {
+    height: 48px;
+    font-size: 16px;
+  }
+}
+
 
 /* Tools Selector styling */
 .nonogram-tools-selector {
