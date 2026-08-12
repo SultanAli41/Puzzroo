@@ -2442,19 +2442,19 @@ body.dark-mode {
   font-weight: 700;
   font-size: 24px;
   box-sizing: border-box;
-  /* Clue borders match their background (seamless continuous look) */
-  border-top: 2px solid var(--nonogram-hint-bg);
-  border-bottom: 2px solid var(--nonogram-hint-bg);
-  border-right: 2px solid var(--nonogram-hint-bg);
+  /* Separator border matching wrapper background color */
+  border-top: 2px solid var(--bg-wrapper);
+  border-bottom: 2px solid var(--bg-wrapper);
+  border-right: 2px solid var(--bg-wrapper);
 }
 
 /* Column hint border overrides */
 .nonogram-col-hint:nth-child(2) {
-  border-left: 2px solid var(--nonogram-hint-bg);
+  border-left: 2px solid var(--bg-wrapper);
 }
 
 .nonogram-col-hint:nth-child(6) {
-  border-right: 2px solid var(--nonogram-hint-bg);
+  border-right: 2px solid var(--bg-wrapper);
 }
 
 /* Row hints: left clues */
@@ -2471,19 +2471,19 @@ body.dark-mode {
   font-weight: 700;
   font-size: 24px;
   box-sizing: border-box;
-  /* Clue borders match their background (seamless continuous look) */
-  border-left: 2px solid var(--nonogram-hint-bg);
-  border-right: 2px solid var(--nonogram-hint-bg);
-  border-bottom: 2px solid var(--nonogram-hint-bg);
+  /* Separator border matching wrapper background color */
+  border-left: 2px solid var(--bg-wrapper);
+  border-right: 2px solid var(--bg-wrapper);
+  border-bottom: 2px solid var(--bg-wrapper);
 }
 
 /* Row hint border overrides */
 .nonogram-row-hint:nth-child(7) {
-  border-top: 2px solid var(--nonogram-hint-bg);
+  border-top: 2px solid var(--bg-wrapper);
 }
 
 .nonogram-row-hint:nth-child(31) {
-  border-bottom: 2px solid var(--nonogram-hint-bg);
+  border-bottom: 2px solid var(--bg-wrapper);
 }
 
 /* Playable cells */
