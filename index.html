@@ -14,6 +14,15 @@
 </head>
 
 <body>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('puzzroo-theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme ? savedTheme : systemTheme;
+      document.documentElement.setAttribute('data-theme', theme);
+      document.body.classList.add(theme === 'dark' ? 'dark-mode' : 'light-mode');
+    })();
+  </script>
   <div class="wrapper-div" id="wrapper">
     <!-- Header Section (1440px x 444px) -->
     <header>

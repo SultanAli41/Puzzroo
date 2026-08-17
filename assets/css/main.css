@@ -56,6 +56,12 @@
     --toggle-color: #FFC72C;
     --toggle-border: #3B3363;
     --wrapper-shadow: rgba(0, 0, 0, 0.5);
+    /* Game Nonogram/Ninja variables for system prefers dark theme */
+    --nonogram-hint-bg: #211D39;
+    --nonogram-hint-color: #F8F7FF;
+    --nonogram-cell-filled-bg: #A592FF;
+    --nonogram-cell-border: #2D274A;
+    --nonogram-cell-empty-bg: #1F222A;
   }
 }
 
@@ -163,6 +169,7 @@ body.dark-mode.lobby-page-body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -285,10 +292,12 @@ header {
   font-size: 16px;
   line-height: 140%;
   letter-spacing: 0.2px;
-  text-align: center;
+  text-align: right;
   vertical-align: middle;
   color: var(--text-primary);
   transition: color 0.3s ease;
+  display: inline-block;
+  width: 90px;
 }
 
 .theme-icon {
@@ -513,7 +522,13 @@ body.dark-mode .theme-toggle-btn .dark-icon {
   transition: all 0.2s ease;
 }
 
-.mobile-link:hover,
+@media (hover: hover) {
+  .mobile-link:hover {
+    background-color: var(--card-bg);
+    color: var(--primary-purple);
+  }
+}
+
 .mobile-link.active {
   background-color: var(--card-bg);
   color: var(--primary-purple);
@@ -2377,7 +2392,7 @@ body.dark-mode .sudoku-cell.cell-error {
   --nonogram-cell-empty-bg: #FFFFFF;
 }
 
-[data-theme="dark"] :root,
+[data-theme="dark"],
 body.dark-mode {
   --nonogram-hint-bg: #211D39;
   --nonogram-hint-color: #F8F7FF;

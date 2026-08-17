@@ -28,7 +28,7 @@
       --cw-word-highlight-bg: #F4F1FF;
     }
 
-    [data-theme="dark"] :root,
+    [data-theme="dark"],
     body.dark-mode {
       --cw-cell-border: #2D274A;
       --cw-cell-empty-bg: #1F222A;
@@ -297,6 +297,15 @@
 </head>
 
 <body class="lobby-page-body">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('puzzroo-theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme ? savedTheme : systemTheme;
+      document.documentElement.setAttribute('data-theme', theme);
+      document.body.classList.add(theme === 'dark' ? 'dark-mode' : 'light-mode');
+    })();
+  </script>
   <div class="wrapper-div" id="wrapper">
     <!-- Header Section (Navbar only, no Hero) -->
     <header>
