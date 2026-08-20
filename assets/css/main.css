@@ -2028,8 +2028,7 @@ body.dark-mode .sudoku-cell.cell-error {
   display: grid;
   grid-template-areas:
     "score score"
-    "mistakes mistakes"
-    "time time";
+    "mistakes time";
   width: 100%;
   gap: 12px;
 }
@@ -2050,6 +2049,7 @@ body.dark-mode .sudoku-cell.cell-error {
   font-size: 16px;
   font-weight: 700;
   color: var(--text-secondary);
+  justify-self: start;
 }
 
 #stat-time {
@@ -2057,6 +2057,7 @@ body.dark-mode .sudoku-cell.cell-error {
   font-size: 16px;
   font-weight: 700;
   color: var(--text-secondary);
+  justify-self: end;
 }
 
 .stat-item span {
