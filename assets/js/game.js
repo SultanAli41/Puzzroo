@@ -519,6 +519,9 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(timerInterval);
     finalScoreEl.textContent = score;
     victoryOverlay.classList.add('active');
+    if (window.puzzrooSaveGameResult) {
+      window.puzzrooSaveGameResult(score);
+    }
   }
 
   function triggerGameOver() {

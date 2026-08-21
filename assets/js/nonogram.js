@@ -448,6 +448,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (victoryOverlay) {
       victoryOverlay.classList.add('active');
     }
+    if (window.puzzrooSaveGameResult) {
+      window.puzzrooSaveGameResult(score);
+    }
   }
 
   // Try Again click

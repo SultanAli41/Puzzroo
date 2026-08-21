@@ -727,6 +727,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (finalScoreEl) finalScoreEl.textContent = score;
     if (victoryOverlay) victoryOverlay.classList.add('active');
+    if (window.puzzrooSaveGameResult) {
+      window.puzzrooSaveGameResult(score);
+    }
   }
 
   if (gameOverRestartBtn) {
