@@ -601,8 +601,61 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI();
   };
 
+  // 7. Track and render game played statuses
+  const trackAndRenderGameStatus = () => {
+    // Save status if on a game page
+    const path = window.location.pathname;
+    if (path.includes('game-ninja.html')) {
+      localStorage.setItem('puzzroo_played_ninja', 'true');
+    } else if (path.includes('game-crossword.html')) {
+      localStorage.setItem('puzzroo_played_crossword', 'true');
+    } else if (path.includes('game.html')) {
+      localStorage.setItem('puzzroo_played_sudoku', 'true');
+    } else if (path.includes('game-kakuro.html')) {
+      localStorage.setItem('puzzroo_played_kakuro', 'true');
+    } else if (path.includes('game-dotsmatch.html')) {
+      localStorage.setItem('puzzroo_played_dotsmatch', 'true');
+    } else if (path.includes('game-nonogram.html')) {
+      localStorage.setItem('puzzroo_played_nonogram', 'true');
+    }
+
+    // Update index.html if we are on the homepage
+    if (document.querySelector('.games-section')) {
+      const games = [
+        { id: 'ninja', link: 'lobby-ninja.html' },
+        { id: 'crossword', link: 'lobby-crossword.html' },
+        { id: 'sudoku', link: 'lobby.html' },
+        { id: 'kakuro', link: 'lobby-kakuro.html' },
+        { id: 'dotsmatch', link: 'lobby-dotsmatch.html' },
+        { id: 'nonogram', link: 'lobby-nonogram.html' }
+      ];
+
+      games.forEach(g => {
+        const isPlayed = localStorage.getItem(`puzzroo_played_${g.id}`) === 'true';
+        // Find the card that has a link containing g.link
+        const cardLink = document.querySelector(`.card-item a[href="${g.link}"]`);
+        if (cardLink) {
+          const cardItem = cardLink.closest('.card-item');
+          if (cardItem) {
+            const statusSpan = cardItem.querySelector('.game-status');
+            if (statusSpan) {
+              if (isPlayed) {
+                statusSpan.className = 'game-status game-status-icon';
+                statusSpan.innerHTML = `<img src="assets/images/Game.svg" alt="Game Icon" class="game-status-img" width="25" height="25">`;
+              } else {
+                statusSpan.className = 'game-status';
+                statusSpan.textContent = 'Unplayed';
+              }
+            }
+          }
+        }
+      });
+    }
+  };
+
   // Initialize Auth module: Inject templates & update current state UI
   injectAuthModals();
   updateAuthUI();
+  trackAndRenderGameStatus();
 });
 

@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/main.css?v=13">
-  
+
   <style>
     /* ==========================================================================
        Cross Word Specific Styles
@@ -120,6 +120,7 @@
     .cw-cell:nth-child(5n) {
       border-right: none;
     }
+
     .cw-cell:nth-child(n+21) {
       border-bottom: none;
     }
@@ -178,7 +179,7 @@
       box-sizing: border-box;
     }
 
-    .cw-clues-wrapper > div {
+    .cw-clues-wrapper>div {
       flex: 1;
       min-width: 0;
     }
@@ -302,7 +303,7 @@
 
 <body class="lobby-page-body">
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('puzzroo-theme');
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       const theme = savedTheme ? savedTheme : systemTheme;

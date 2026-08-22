@@ -170,6 +170,18 @@ body.dark-mode.lobby-page-body {
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection in inputs and editable areas */
+input, textarea, [contenteditable="true"], [contenteditable="true"] *, .puzzroo-form-input, .puzzroo-modal-card input {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 html,
@@ -892,7 +904,6 @@ body.dark-mode .game-status-img {
 .premium-section {
   width: 100%;
   max-width: 1312px;
-  margin-top: 32px;
   display: flex;
   flex-direction: column;
 }
@@ -917,7 +928,6 @@ body.dark-mode .premium-heading-mobile {
 
 .premium-card {
   width: 100%;
-  max-width: 1312px;
   height: 557px;
   border-radius: 20px;
   background-color: #FFFFFF;
@@ -1089,7 +1099,6 @@ body.dark-mode .feature-text {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 16px;
 }
 
 .faqs-section .section-title {
@@ -1469,7 +1478,7 @@ footer {
   .navbar,
   .hero-section,
   .games-section,
-  .premium-card,
+  .premium-section,
   .faqs-section,
   .footer-container {
     max-width: 1520px;
