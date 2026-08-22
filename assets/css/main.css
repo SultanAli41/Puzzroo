@@ -767,7 +767,6 @@ body.dark-mode .section-title {
 /* Card Image */
 .card-image-wrapper {
   width: 100%;
-  max-width: 339.55px;
   height: auto;
   aspect-ratio: 1;
   border-radius: 12.31px;
@@ -817,7 +816,6 @@ body.dark-mode .card-img-light {
 /* Card Info Row */
 .card-info {
   width: 100%;
-  max-width: 345.35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -871,7 +869,6 @@ body.dark-mode .game-status-img {
 /* Button in Card */
 .btn-play {
   width: 100%;
-  max-width: 345.35px;
   height: 45.06px;
   gap: 10.53px;
   opacity: 1;
@@ -1499,9 +1496,7 @@ footer {
     padding: 36px;
   }
 
-  .card-image-wrapper {
-    max-width: 408px;
-  }
+
 
   .section-title {
     font-size: 48px;
